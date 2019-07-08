@@ -73,6 +73,7 @@ plugins=(
   copydir
   dircycle
   tmux
+  osx
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -190,7 +191,6 @@ complete -o nospace -C /usr/local/bin/vault vault
 alias cl='clear'
 alias tf='terraform'
 alias dc='docker-compose'
-# alias gcd='cd $GOPATH/' WIP
-
+alias sp='spotify'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
