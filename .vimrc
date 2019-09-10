@@ -4,6 +4,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf', 
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'wincent/terminus'
 call plug#end()
 
 " Other settings
@@ -11,7 +13,7 @@ call plug#end()
 :set hlsearch
 :set incsearch
 
-" yank to clipboard
+" Yank to clipboard
 if has("clipboard")
   set clipboard=unnamed " copy to the system clipboard
 
@@ -19,3 +21,4 @@ if has("clipboard")
     set clipboard+=unnamedplus
   endif
 endif
+
