@@ -7,7 +7,10 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="spaceship"
+# ZSH_THEME=powerlevel10k/powerlevel10k
+eval "$(starship init zsh)"
 
 # Set the default user (removes the user@hostname part of the regular prompt)
 DEFAULT_USER="simonbein"
@@ -114,11 +117,11 @@ source $ZSH/oh-my-zsh.sh
 export TERM=xterm-256color
 
 # Enable the kube-ps1 (https://github.com/jonmosco/kube-ps1) extension
-[ -f /usr/local/opt/kube-ps1/share/kube-ps1.sh ] && source /usr/local/opt/kube-ps1/share/kube-ps1.sh && \
-PROMPT='$(kube_ps1)'$PROMPT&& \
-KUBE_PS1_SYMBOL_ENABLE="false" && \
-KUBE_PS1_NS_COLOR="green" && \
-KUBE_PS1_CTX_COLOR="blue"
+# [ -f /usr/local/opt/kube-ps1/share/kube-ps1.sh ] && source /usr/local/opt/kube-ps1/share/kube-ps1.sh && \
+# PROMPT='$(kube_ps1)'$PROMPT&& \
+# KUBE_PS1_SYMBOL_ENABLE="false" && \
+# KUBE_PS1_NS_COLOR="green" && \
+# KUBE_PS1_CTX_COLOR="blue"
 
 PATH=$PATH:/usr/local/Cellar/git/2.19.2/bin
 # Set up gs as alias for 'git status'
@@ -194,3 +197,6 @@ alias dc='docker-compose'
 alias sp='spotify'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
