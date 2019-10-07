@@ -2,7 +2,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [user]
 	name = Simon Bein
-	email = sbein@ambidexter.gmbh
+	email = simon@codeconductor.io 
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	excludesfile = /Users/simonbein/.gitignore
