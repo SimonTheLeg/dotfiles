@@ -77,6 +77,7 @@ plugins=(
   dircycle
   tmux
   osx
+  zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -186,9 +187,6 @@ alias exa='exa --long --git'
 alias cat='bat'
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
-
-# Link to z
-. /usr/local/bin/z.sh
 
 # Other Alias
 alias cl='clear'
