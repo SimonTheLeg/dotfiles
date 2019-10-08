@@ -1,5 +1,6 @@
-export DOTFILESPATH='~/simontheleg/dotfiles'
+export DOTFILESPATH="${HOME}/simontheleg/dotfiles"
 
-ln -s ${DOTFILESPATH}/.vimrc ~/.vimrc
-ln -s ${DOTFILESPATH}/.gitconfig ~/.gitconfig
-ln -s ${DOTFILESPATH}/.zshrc ~/.zshrc
+ln -s -f ${DOTFILESPATH}/.vimrc ~/.vimrc
+ln -s -f ${DOTFILESPATH}/.gitconfig ~/.gitconfig
+ln -s -f ${DOTFILESPATH}/.zshrc ~/.zshrc
+ln -s -f ${DOTFILESPATH}/starship.toml ~/.config/starship.toml
