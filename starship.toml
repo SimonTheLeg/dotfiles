@@ -1,0 +1,8 @@
+add_newline = false
+
+[kubernetes]
+disabled=false
+style="blue"
+
+[directory]
+style="green"
