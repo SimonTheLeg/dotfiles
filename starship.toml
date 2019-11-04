@@ -6,3 +6,7 @@ style="blue"
 
 [directory]
 style="green"
+truncate_to_repo=false
+
+[jobs]
+threshold = 2
