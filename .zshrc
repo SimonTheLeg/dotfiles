@@ -196,6 +196,7 @@ alias tf='terraform'
 alias dc='docker-compose'
 alias sp='spotify'
 alias fk='fly -t k'
+alias cdg='cd $(git rev-parse --show-cdup)'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
