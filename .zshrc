@@ -145,9 +145,6 @@ alias skc='kubectl --context ambid-stg-app-admin'
 # sed alias to use gsed
 alias sed='gsed' 
 
-# Install krew (kubernetes plugin manager)
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
 # Change `kubectl edit` editor to vim
 export KUBE_EDITOR='vim'
 
@@ -203,6 +200,9 @@ alias sp='spotify'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+# krew custom path aliasing
+PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/simonbein/.sdkman"
