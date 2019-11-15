@@ -195,6 +195,7 @@ alias cl='clear'
 alias tf='terraform'
 alias dc='docker-compose'
 alias sp='spotify'
+alias fk='fly -t k'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
