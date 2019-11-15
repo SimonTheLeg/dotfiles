@@ -61,6 +61,10 @@ DEFAULT_USER="simonbein"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Since we source kubectl with asdf we need to source it before
+# running the kubectl plugin
+source $HOME/.asdf/asdf.sh
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -78,6 +82,7 @@ plugins=(
   tmux
   osx
   zsh-z
+  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
