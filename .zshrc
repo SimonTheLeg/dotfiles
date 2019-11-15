@@ -129,7 +129,6 @@ export TERM=xterm-256color
 # KUBE_PS1_NS_COLOR="green" && \
 # KUBE_PS1_CTX_COLOR="blue"
 
-PATH=$PATH:/usr/local/Cellar/git/2.19.2/bin
 # Set up gs as alias for 'git status'
 alias gs='git status'
 
