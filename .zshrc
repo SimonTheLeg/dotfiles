@@ -160,11 +160,6 @@ if [ -f '/Users/simonbein/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/simonbein/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/simonbein/google-cloud-sdk/completion.zsh.inc'; fi
 
-
-# Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 # Kubebuilder
 export PATH=$PATH:/usr/local/kubebuilder/bin
 
@@ -209,3 +204,7 @@ PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/simonbein/.sdkman"
 [[ -s "/Users/simonbein/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/simonbein/.sdkman/bin/sdkman-init.sh"
+
+# Node Version Manager
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
