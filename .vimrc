@@ -6,6 +6,7 @@ Plug 'junegunn/fzf',
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'wincent/terminus'
+Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'asvetliakov/vim-easymotion' "Fork needed for VSCode integration
 call plug#end()
 
