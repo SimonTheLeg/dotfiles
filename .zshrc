@@ -194,8 +194,6 @@ alias cdg='cd $(git rev-parse --show-cdup)'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # krew custom path aliasing
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
