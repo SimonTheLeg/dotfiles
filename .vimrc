@@ -1,7 +1,7 @@
 " vim-plug settings
 
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', 
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
@@ -22,3 +22,5 @@ if has("clipboard")
   endif
 endif
 
+" Nertoggle remap
+map <C-n> :NERDTreeToggle<CR>
