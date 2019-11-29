@@ -6,6 +6,7 @@ Plug 'junegunn/fzf',
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'wincent/terminus'
+Plug 'asvetliakov/vim-easymotion' "Fork needed for VSCode integration
 call plug#end()
 
 " Other settings
@@ -24,3 +25,7 @@ endif
 
 " Nertoggle remap
 map <C-n> :NERDTreeToggle<CR>
+
+" Remap easymotion
+map <Leader> <Plug>(easymotion-prefix)
+
