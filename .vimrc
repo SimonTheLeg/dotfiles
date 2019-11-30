@@ -8,6 +8,7 @@ Plug 'tpope/vim-commentary'
 Plug 'wincent/terminus'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'asvetliakov/vim-easymotion' "Fork needed for VSCode integration
+Plug 'tpope/vim-abolish' 
 call plug#end()
 
 " Other settings
