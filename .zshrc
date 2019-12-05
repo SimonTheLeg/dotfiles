@@ -216,6 +216,5 @@ PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export SDKMAN_DIR="/Users/simonbein/.sdkman"
 [[ -s "/Users/simonbein/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/simonbein/.sdkman/bin/sdkman-init.sh"
 
-# Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# Only loadnvm on demand, as it takes around 2 seconds to source
+alias loadnvm=". $HOME/.nvm/nvm.sh"
