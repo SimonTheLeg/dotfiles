@@ -99,6 +99,9 @@ if [ -n "${commands[fzf-share]}" ]; then
   source "$(fzf-share)/key-bindings.zsh"
 fi
 
+# Source syntax highlighting plugin
+source $(nix-env -q --out-path --no-name zsh-syntax-highlighting)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 FZF_COMPLETION_TRIGGER='*'
 
 _fzf_complete_pass() {
