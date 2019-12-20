@@ -116,3 +116,10 @@ _fzf_complete_pass() {
 
 # krew custom path aliasing
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# Automatically reset the cursor to beam after exiting vim
+autoload -U add-zsh-hook
+function vim () {
+  printf "\x1b[\x36 q" 
+}
+add-zsh-hook -Uz precmd vim
