@@ -6,6 +6,7 @@
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	excludesfile = /Users/simonbein/.gitignore
+	editor = nvim
 [push]
   #default = matching
   default = current
