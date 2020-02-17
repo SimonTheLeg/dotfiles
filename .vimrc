@@ -10,6 +10,8 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'asvetliakov/vim-easymotion' "Fork needed for VSCode integration
 Plug 'tpope/vim-abolish' 
 Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " Other settings
