@@ -128,6 +128,10 @@ add-zsh-hook -Uz precmd vim
 unalias gco
 gco() {
   local tags branches target
+  if (( $# > 0 )); then
+	  git checkout $@
+	  return
+  fi
   branches=$(
     git --no-pager branch --sort=-committerdate \
       --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
