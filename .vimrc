@@ -101,3 +101,6 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set updatetime=100
 
+set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
+:set listchars=tab:->,trail:·,extends:>,precedes:<,space:·
+:set list
