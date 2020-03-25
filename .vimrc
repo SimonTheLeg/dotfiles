@@ -1,17 +1,48 @@
 " vim-plug settings
 
+" Helper function to allow for conditional imports of plugins
+" I need conditional imports because I am using nvim both as
+" standalone and inside VSCode
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', 
+
+" Plugins to ALWAYS use
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'wincent/terminus'
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'asvetliakov/vim-easymotion' "Fork needed for VSCode integration
 Plug 'tpope/vim-abolish' 
 Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'jeetsukumaran/vim-indentwise'
+
+" Plugins to only use inside PLAIN nvim
+Plug 'airblade/vim-gitgutter', Cond(!exists('g:vscode'))
+Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
+Plug 'ncm2/ncm2', Cond(!exists('g:vscode'))
+Plug 'roxma/nvim-yarp', Cond(!exists('g:vscode'))
+Plug 'ncm2/ncm2-bufword', Cond(!exists('g:vscode'))
+Plug 'ncm2/ncm2-path', Cond(!exists('g:vscode'))
+Plug 'ncm2/ncm2-go', Cond(!exists('g:vscode'))
+Plug 'ncm2/ncm2-racer', Cond(!exists('g:vscode'))
+Plug 'ekalinin/Dockerfile.vim', Cond(!exists('g:vscode'), {'for' : 'Dockerfile'})
+Plug 'hashivim/vim-hashicorp-tools', Cond(!exists('g:vscode'))
+Plug 'fatih/vim-go', Cond(!exists('g:vscode'), { 'do': ':GoUpdateBinaries' })
+Plug 'rust-lang/rust.vim', Cond(!exists('g:vscode'))
+Plug 'junegunn/fzf', Cond(!exists('g:vscode'), { 'do': './install --bin' })
+Plug 'junegunn/fzf.vim', Cond(!exists('g:vscode'))
+Plug 'iamcco/markdown-preview.nvim', Cond(!exists('g:vscode'))
+
+" Plugins to use inside VSCode nvim
+"
+" Currently not useable, because vim-plug does not allow for two plugins to
+" have the same name https://github.com/junegunn/vim-plug/issues/331#issuecomment-160170317
+" Plug 'asvetliakov/vim-easymotion' " Cond(exists('g:vscode')) Fork needed for VSCode integration
+
 call plug#end()
 
 " Other settings
