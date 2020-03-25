@@ -71,3 +71,5 @@ map <C-n> :NERDTreeToggle<CR>
 " Remap easymotion
 map <Leader> <Plug>(easymotion-prefix)
 
+" FZF remap
+map <C-f> :Files<CR>
