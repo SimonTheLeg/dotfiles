@@ -104,3 +104,10 @@ set updatetime=100
 set tabstop=2 softtabstop=0 expandtab shiftwidth=2 smarttab
 :set listchars=tab:->,trail:·,extends:>,precedes:<,space:·
 :set list
+
+" GitGutter settings
+highlight LineNr ctermfg=grey
+highlight GitGutterAdd    guifg=#009900 guibg=<X> ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 guibg=<X> ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 guibg=<X> ctermfg=1
+:syntax on
