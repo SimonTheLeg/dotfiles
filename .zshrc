@@ -116,6 +116,9 @@ _fzf_complete_pass() {
   )
 }
 
+# Gopass
+source <(gopass completion bash)
+
 # krew custom path aliasing
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
