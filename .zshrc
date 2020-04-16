@@ -122,6 +122,24 @@ source <(gopass completion bash)
 # krew custom path aliasing
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
+# custom path aliasing for pip installed packages
+PATH="/Users/simonbein/.local/bin:$PATH"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/simonbein/.sdkman"
+[[ -s "/Users/simonbein/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/simonbein/.sdkman/bin/sdkman-init.sh"
+
+[[ -s "/Users/simonbein/.gvm/scripts/gvm" ]] && source "/Users/simonbein/.gvm/scripts/gvm"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/simonbein/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/simonbein/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Initialize pyenv paths
+eval "$(pyenv init -)"
+
 # Automatically reset the cursor to beam after exiting vim
 autoload -U add-zsh-hook
 function vim () {
