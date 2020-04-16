@@ -93,15 +93,18 @@ alias dc='docker-compose'
 alias sp='spotify'
 alias fk='fly -t k'
 alias cdg='cd $(git rev-parse --show-cdup)'
+alias pass='gopass'
 
 if [ -n "${commands[fzf-share]}" ]; then
+  FZF_COMPLETION_TRIGGER='*'
   source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
 fi
 
 # Source syntax highlighting plugin
 source $(nix-env -q --out-path --no-name zsh-syntax-highlighting)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-FZF_COMPLETION_TRIGGER='*'
+# Completions
 
 _fzf_complete_pass() {
   _fzf_complete '+m' "$@" < <(
