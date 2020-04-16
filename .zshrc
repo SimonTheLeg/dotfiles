@@ -59,6 +59,7 @@ alias dkc='kubectl --context ambid-dev-app-admin'
 alias skc='kubectl --context ambid-stg-app-admin'
 
 # Change `kubectl edit` editor to vim
+export KUBE_EDITOR='nvim'
 
 # Aliases for kubie
 alias kns='kubie ns'
