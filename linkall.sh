@@ -5,3 +5,4 @@ ln -s -f ${DOTFILESPATH}/.gitconfig ~/.gitconfig
 ln -s -f ${DOTFILESPATH}/.zshrc ~/.zshrc
 ln -s -f ${DOTFILESPATH}/starship.toml ~/.config/starship.toml
 ln -s -f ${DOTFILESPATH}/init.vim ~/.config/nvim/init.vim
+ln -s -f ${DOTFILESPATH}/kubie.yaml ~/.kube/kubie.yaml

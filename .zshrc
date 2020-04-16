@@ -55,17 +55,10 @@ alias dkc='kubectl --context ambid-dev-app-admin'
 alias skc='kubectl --context ambid-stg-app-admin'
 
 # Change `kubectl edit` editor to vim
-export KUBE_EDITOR='vim'
 
-# Aliases for kubectx and kubens
-alias kns='kubens'
-alias kctx='kubectx'
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/simonbein/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/simonbein/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/simonbein/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/simonbein/google-cloud-sdk/completion.zsh.inc'; fi
+# Aliases for kubie
+alias kns='kubie ns'
+alias kctx='kubie ctx'
 
 # iTerm shell integration (https://www.iterm2.com/documentation-shell-integration.html)
 source ~/.iterm2_shell_integration.zsh
