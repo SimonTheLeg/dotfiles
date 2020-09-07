@@ -19,6 +19,7 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'jeetsukumaran/vim-indentwise'
+Plug 'terryma/vim-multiple-cursors'
 
 " Plugins to only use inside PLAIN nvim
 Plug 'airblade/vim-gitgutter', Cond(!exists('g:vscode'))
@@ -36,6 +37,16 @@ Plug 'rust-lang/rust.vim', Cond(!exists('g:vscode'))
 Plug 'junegunn/fzf', Cond(!exists('g:vscode'), { 'do': './install --bin' })
 Plug 'junegunn/fzf.vim', Cond(!exists('g:vscode'))
 Plug 'iamcco/markdown-preview.nvim', Cond(!exists('g:vscode'))
+Plug 'Chiel92/vim-autoformat', Cond(!exists('g:vscode'))
+Plug 'itchyny/lightline.vim', Cond(!exists('g:vscode'))
+Plug 'christianrondeau/vim-base64', Cond(!exists('g:vscode'))
+Plug 'chuling/vim-equinusocio-material', Cond(!exists('g:vscode'))
+Plug 'PeterRincker/vim-searchlight', Cond(!exists('g:vscode'))
+Plug '907th/vim-auto-save', Cond(!exists('g:vscode'))
+Plug 'zirrostig/vim-schlepp', Cond(!exists('g:vscode'))
+Plug 'preservim/nerdtree', Cond(!exists('g:vscode'))
+Plug 'jlanzarotta/bufexplorer', Cond(!exists('g:vscode'))
+Plug 'pbogut/fzf-mru.vim', Cond(!exists('g:vscode'))
 
 " Plugins to use inside VSCode nvim
 "
@@ -66,7 +77,7 @@ if $TERM_PROGRAM =~ "iTerm"
 endif
 
 " Nertoggle remap
-map <C-n> :NERDTreeToggle<CR>
+map <C-e> :NERDTreeToggle<CR>
 
 " Remap easymotion
 map <Leader> <Plug>(easymotion-prefix)
@@ -130,4 +141,67 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
+
+" Copy absolute path
+:command! CAP let @+ = expand('%:p')
+
+" Create parent directoy on save if it does not already exist
+function s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+
+" Disable the normal status bar (e.g. -- INSERT --) because it's shown in
+" lightline
+set noshowmode
+
+" Map hide search highlight to C-h to make it easier
+map <C-h> :noh <CR>
+
+" Colourscheme settings
+set termguicolors
+let g:equinusocio_material_hide_vertsplit = 1
+colorscheme equinusocio_material
+
+" Additional bindings for the vim-base64 plugin
+vnoremap <silent> <leader>e :<c-u>call base64#v_btoa()<cr>
+vnoremap <silent> <leader>d :<c-u>call base64#v_atob()<cr>
+vnoremap <silent> <leader>atob :<c-u>call base64#v_atob()<cr>
+vnoremap <silent> <leader>btoa :<c-u>call base64#v_btoa()<cr>vnoremap <silent> <leader>atob :<c-u>call base64#v_atob()<cr>
+vnoremap <silent> <leader>btoa :<c-u>call base64#v_btoa()<cr>vnoremap <silent> <leader>atob :<c-u>call base64#v_atob()<cr>
+vnoremap <silent> <leader>btoa :<c-u>call base64#v_btoa()<cr>
+
+" Always enable autosave plugin
+let g:auto_save = 1
+autocmd SwapExists * let v:swapchoice = 'e' "since we are using autosave, it is safe to open the file every time
+
+" " vim-schlepp bindings
+" vmap <unique> D <Plug>SchleppDup
+" vmap <unique> <up>    <Plug>SchleppUp
+" vmap <unique> <down>  <Plug>SchleppDown
+" vmap <unique> <left>  <Plug>SchleppLeft
+" vmap <unique> <right> <Plug>SchleppRight
+
+" make search case insensitive
+:set ignorecase
+
+" " Allow for persistent undo
+" " => not needed anymore as it is default in nvim
+" try
+"     set undodir=~/.vim_runtime/temp_dirs/undodir
+"     set undofile
+" catch
+" endtry
+
+" Remember more files
+let MRU_Max_Entries = 1000
+map <C-m> :FZFMru <CR>
 
