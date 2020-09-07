@@ -42,6 +42,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Alias NeoVim as Vim
 alias vim=nvim
+export EDITOR='nvim'
 
 # Fix color for autocomplete in tmux
 export TERM=xterm-256color
