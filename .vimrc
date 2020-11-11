@@ -47,6 +47,7 @@ Plug 'zirrostig/vim-schlepp', Cond(!exists('g:vscode'))
 Plug 'preservim/nerdtree', Cond(!exists('g:vscode'))
 Plug 'jlanzarotta/bufexplorer', Cond(!exists('g:vscode'))
 Plug 'pbogut/fzf-mru.vim', Cond(!exists('g:vscode'))
+Plug 'christoomey/vim-tmux-navigator', Cond(!exists('g:vscode'))
 
 " Plugins to use inside VSCode nvim
 "
@@ -83,11 +84,11 @@ map <C-e> :NERDTreeToggle<CR>
 map <Leader> <Plug>(easymotion-prefix)
 
 " FZF remap
-map <C-f> :Files<CR>
+map <C-s> :Files<CR>
 
 " easier sourcing of current file; noh is required because some setting always
 " puts the current character in search buffer after sourcing
-nmap <C-S> :w<CR>:so %<CR>:noh<CR>
+" nmap <C-S> :w<CR>:so %<CR>:noh<CR>
 
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -204,4 +205,12 @@ autocmd SwapExists * let v:swapchoice = 'e' "since we are using autosave, it is 
 " Remember more files
 let MRU_Max_Entries = 1000
 map <C-m> :FZFMru <CR>
+
+" settings for tmux seamless navigation
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-w>h :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-w>j :TmuxNavigateDown<cr>
+nnoremap <silent> <C-w>k :TmuxNavigateUp<cr>
+nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
+nnoremap <silent> <C-w>\ :TmuxNavigatePrevious<cr>
 
