@@ -85,7 +85,7 @@ map <C-e> :NERDTreeToggle<CR>
 map <Leader> <Plug>(easymotion-prefix)
 
 " FZF remap
-map <C-s> :Files<CR>
+map <C-o> :Files<CR>
 
 " easier sourcing of current file; noh is required because some setting always
 " puts the current character in search buffer after sourcing
