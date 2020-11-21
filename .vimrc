@@ -20,6 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'jeetsukumaran/vim-indentwise'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-obsession'
 
 " Plugins to only use inside PLAIN nvim
 Plug 'airblade/vim-gitgutter', Cond(!exists('g:vscode'))
