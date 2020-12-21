@@ -83,7 +83,7 @@ alias ls='exa'
 alias exa='exa --long --git'
 
 # Bat alias
-alias cat='bat'
+alias cat='bat --theme "TwoDark"'
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/vault vault
 
