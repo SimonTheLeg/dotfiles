@@ -25,7 +25,6 @@ plugins=(
   git-open
   terraform
   colored-man-pages
-  dircycle
   tmux
   osx
   zsh-z
