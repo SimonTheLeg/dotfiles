@@ -8,11 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Until I have time to find a more permanent solution
 export LANG=en_US.UTF-8
 
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="agnoster"
-# ZSH_THEME="spaceship"
-# ZSH_THEME=powerlevel10k/powerlevel10k
+# Load the starship theme
 eval "$(starship init zsh)"
 
 # Set the default user (removes the user@hostname part of the regular prompt)
@@ -23,7 +19,6 @@ DEFAULT_USER="simonbein"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
   zsh-autosuggestions
   docker
   gitfast
