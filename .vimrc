@@ -49,6 +49,7 @@ Plug 'preservim/nerdtree', Cond(!exists('g:vscode'))
 Plug 'jlanzarotta/bufexplorer', Cond(!exists('g:vscode'))
 Plug 'pbogut/fzf-mru.vim', Cond(!exists('g:vscode'))
 Plug 'christoomey/vim-tmux-navigator', Cond(!exists('g:vscode'))
+Plug 'chriskempson/base16-vim', Cond(!exists('g:vscode'))
 
 " Plugins to use inside VSCode nvim
 "
@@ -57,6 +58,10 @@ Plug 'christoomey/vim-tmux-navigator', Cond(!exists('g:vscode'))
 " Plug 'asvetliakov/vim-easymotion' " Cond(exists('g:vscode')) Fork needed for VSCode integration
 
 call plug#end()
+
+" Set colorscheme
+colorscheme base16-onedark
+set termguicolors
 
 " Other settings
 :set number
