@@ -86,8 +86,9 @@ endif
 " Nertoggle remap
 map <C-e> :NERDTreeToggle<CR>
 
+" //TODO temporarily disabled
 " FZF remap
-map <C-[> :Files<CR>
+" map <C-[> :Files<CR>
 
 " easier sourcing of current file; noh is required because some setting always
 " puts the current character in search buffer after sourcing
@@ -207,7 +208,7 @@ autocmd SwapExists * let v:swapchoice = 'e' "since we are using autosave, it is 
 
 " Remember more files
 let MRU_Max_Entries = 1000
-map <C-m> :FZFMru <CR>
+" map <C-m> :FZFMru <CR>
 
 " settings for tmux seamless navigation
 " let g:tmux_navigator_no_mappings = 1
