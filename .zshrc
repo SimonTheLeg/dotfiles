@@ -40,6 +40,7 @@ export TERM=xterm-256color
 
 # Set up gs as alias for 'git status'
 alias gs='git status'
+alias gp='git push'
 
 # Kubernetes Aliases
 alias kc='kubectl'
