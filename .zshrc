@@ -62,7 +62,7 @@ alias kctx='kubie ctx'
 # iTerm shell integration (https://www.iterm2.com/documentation-shell-integration.html)
 source ~/.iterm2_shell_integration.zsh
 
-[ -s "/Users/simonbein/.scm_breeze/scm_breeze.sh" ] && source "/Users/simonbein/.scm_breeze/scm_breeze.sh"
+[ -s "${HOME}/.scm_breeze/scm_breeze.sh" ] && source "${HOME}/.scm_breeze/scm_breeze.sh"
 
 # Stern autocompletion
 source <(stern --completion=zsh)
@@ -116,19 +116,19 @@ source <(gopass completion bash)
 PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # custom path aliasing for pip installed packages
-PATH="/Users/simonbein/.local/bin:$PATH"
+PATH="${HOME}/.local/bin:$PATH"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/simonbein/.sdkman"
-[[ -s "/Users/simonbein/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/simonbein/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="${HOME}/.sdkman"
+[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/simonbein/.sdkman/bin/sdkman-init.sh"
 
-[[ -s "/Users/simonbein/.gvm/scripts/gvm" ]] && source "/Users/simonbein/.gvm/scripts/gvm"
+[[ -s "${HOME}/.gvm/scripts/gvm" ]] && source "/Users/simonbein/.gvm/scripts/gvm"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/simonbein/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '${HOME}/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/simonbein/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '${HOME}/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Initialize pyenv paths
 eval "$(pyenv init -)"
