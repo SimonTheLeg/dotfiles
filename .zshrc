@@ -25,7 +25,6 @@ plugins=(
   git-open
   terraform
   colored-man-pages
-  tmux
   zsh-z
   kubectl
 )
