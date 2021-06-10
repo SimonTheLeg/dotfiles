@@ -173,8 +173,6 @@ map <C-h> :noh <CR>
 
 " Colourscheme settings
 set termguicolors
-let g:equinusocio_material_hide_vertsplit = 1
-colorscheme equinusocio_material
 
 " Additional bindings for the vim-base64 plugin
 vnoremap <silent> <leader>e :<c-u>call base64#v_btoa()<cr>
