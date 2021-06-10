@@ -1,8 +1,5 @@
-# Source nix
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then source $HOME/.nix-profile/etc/profile.d/nix.sh; fi
-
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# Source home-manager
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 
 # Temporarily set locale, to solve https://discourse.brew.sh/t/failed-to-set-locale-category-lc-numeric-to-en-ru/5092/24
 # Until I have time to find a more permanent solution
@@ -14,23 +11,6 @@ eval "$(starship init zsh)"
 # Set the default user (removes the user@hostname part of the regular prompt)
 DEFAULT_USER="simonbein"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  zsh-autosuggestions
-  docker
-  gitfast
-  git-open
-  terraform
-  colored-man-pages
-  zsh-z
-  kubectl
-)
-
-source $ZSH/oh-my-zsh.sh
-
 # Alias NeoVim as Vim
 alias vim=nvim
 export EDITOR='nvim'
@@ -38,9 +18,15 @@ export EDITOR='nvim'
 # Fix color for autocomplete in tmux
 export TERM=xterm-256color
 
-# Set up gs as alias for 'git status'
+# Set up gs as alias for git
 alias gs='git status'
 alias gp='git push'
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gc='git commit'
+alias gcm='git commit --amend'
+alias gdc='git diff --cached'
+alias gap='git add -p'
+alias gpl='git pull'
 
 # Kubernetes Aliases
 alias kc='kubectl'
@@ -61,8 +47,6 @@ alias kctx='kubie ctx'
 
 # iTerm shell integration (https://www.iterm2.com/documentation-shell-integration.html)
 source ~/.iterm2_shell_integration.zsh
-
-[ -s "${HOME}/.scm_breeze/scm_breeze.sh" ] && source "${HOME}/.scm_breeze/scm_breeze.sh"
 
 # Stern autocompletion
 source <(stern --completion=zsh)
@@ -93,9 +77,6 @@ if [ -n "${commands[fzf-share]}" ]; then
   source "$(fzf-share)/key-bindings.zsh"
   source "$(fzf-share)/completion.zsh"
 fi
-
-# Source syntax highlighting plugin
-source $(nix-env -q --out-path --no-name zsh-syntax-highlighting)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Completions
 
@@ -132,6 +113,9 @@ if [ -f '${HOME}/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/simonbei
 
 # Initialize pyenv paths
 eval "$(pyenv init -)"
+
+# Source scmpuff
+scmpuff init -s | source /dev/stdin
 
 # Automatically reset the cursor to beam after exiting vim
 autoload -U add-zsh-hook
