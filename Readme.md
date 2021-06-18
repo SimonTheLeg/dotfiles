@@ -13,7 +13,7 @@ simply run the script
 
 ### One time setup
 
-1. Install nix . Note for future Simon: With nix 2.4 this feature will be moved upstream
+1. Install nix. Note for future Simon: With nix 2.4 this feature will be moved upstream
 
   ```sh
   sh <(curl https://abathur-nix-install-tests.cachix.org/serve/yihf8zbs0jwph2rs9qfh80dnilijxdi2/install) --tarball-url-prefix https://abathur-nix-install-tests.cachix.org/serve
