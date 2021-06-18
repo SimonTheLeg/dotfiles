@@ -31,7 +31,7 @@ simply run the script
 3. Symlink home manager config and [Install Home Manager](https://github.com/nix-community/home-manager#installation)
 
   ```sh
-  ln -f <DOTFILES_REPO_PATH>/home.nix ${HOME}/.config/nixpkgs/home.nix
+  ln -s -f <DOTFILES_REPO_PATH>/home.nix ${HOME}/.config/nixpkgs/home.nix
   nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
   nix-channel --update
   nix-shell '<home-manager>' -A install
