@@ -7,3 +7,38 @@ simply run the script
 ```shell
 ./linkall.sh
 ```
+
+
+## On a new system
+
+### One time setup
+
+1. Install nix . Note for future Simon: With nix 2.4 this feature will be moved upstream
+
+  ```sh
+  sh <(curl https://abathur-nix-install-tests.cachix.org/serve/yihf8zbs0jwph2rs9qfh80dnilijxdi2/install) --tarball-url-prefix https://abathur-nix-install-tests.cachix.org/serve
+  ```
+
+2. Add the unstable channel as nixpkgs
+
+  ```sh
+  nix-channel --add https://channels.nixos.org/nixpkgs-unstable nixpkgs
+  nix-channel --update
+  ```
+
+3. Install Home Manager (https://github.com/nix-community/home-manager#installation)
+
+  ```sh
+  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+  nix-channel --update
+  ```
+
+### For each user on the system one time
+
+4. Symlink the home-manager config and start home-manager
+
+  ```sh
+  export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+  ln -f <DOTFILES_REPO_PATH>/home.nix ${HOME}/.config/nixpkgs/home.nix
+  home-manager switch
+  ```

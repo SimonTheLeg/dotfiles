@@ -107,7 +107,7 @@
     # For now I have given up on managing all plugins and autocompletions via the zsh nix module. Reasons are:
     # - it seems really tough install completion packages. e.g. terraform has its own completions, which is not managed by the plugin it self (see https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/terraform. And I could not find a way to install this
 
-    # For future Simon. You can use the `nix-prefetch-github --nix <gh-owner> <gh-repo>` command to find the revs and shas
+    # For future Simon. You can use the `nix-prefetch-github --nix <gh-owner> <gh-repo> --rev <desired-git-ref>` command to find the revs and shas
 
     plugins = [
       {
@@ -116,8 +116,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-autosuggestions";
-          rev = "v0.4.0";
-          sha256 = "0z6i9wjjklb4lvr7zjhbphibsyx51psv50gm07mbb0kj9058j6kc";
+          rev = "v0.7.0";
+          sha256 = "KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
         };
       }
       {
@@ -126,8 +126,8 @@
         src = pkgs.fetchFromGitHub {
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
-          rev = "0.7.1";
-          sha256 = "039g3n59drk818ylcyvkciv8k9mf739cv6v4vis1h9fv9whbcmwl";
+          rev = "0.7.0";
+          sha256 = "O/qx+Wpj10WKajqdbITP19W7FwlhlYNVSRAyZqTT7Rk=";
         };
       }
       # {
