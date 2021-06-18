@@ -13,11 +13,13 @@ simply run the script
 
 ### One time setup
 
-1. Install nix. Note for future Simon: With nix 2.4 this feature will be moved upstream
+1. Install nix . Note for future Simon: With nix 2.4 this feature will be moved upstream
 
   ```sh
   sh <(curl https://abathur-nix-install-tests.cachix.org/serve/yihf8zbs0jwph2rs9qfh80dnilijxdi2/install) --tarball-url-prefix https://abathur-nix-install-tests.cachix.org/serve
   ```
+
+### For each user on the system one time
 
 2. Add the unstable channel as nixpkgs
 
@@ -26,19 +28,18 @@ simply run the script
   nix-channel --update
   ```
 
-3. Install Home Manager (https://github.com/nix-community/home-manager#installation)
+3. Symlink home manager config and [Install Home Manager](https://github.com/nix-community/home-manager#installation)
 
   ```sh
+  ln -f <DOTFILES_REPO_PATH>/home.nix ${HOME}/.config/nixpkgs/home.nix
   nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
   nix-channel --update
+  nix-shell '<home-manager>' -A install
   ```
 
-### For each user on the system one time
-
-4. Symlink the home-manager config and start home-manager
+4. Start home-manager environment generation
 
   ```sh
   export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-  ln -f <DOTFILES_REPO_PATH>/home.nix ${HOME}/.config/nixpkgs/home.nix
   home-manager switch
   ```

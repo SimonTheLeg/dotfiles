@@ -12,6 +12,13 @@
   # Allow unfree packages as well
   nixpkgs.config.allowUnfree = true;
 
+  # Add overlay so we can use NeoVim 0.5
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
