@@ -6,8 +6,8 @@
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "simonbuilds";
-  home.homeDirectory = "/Users/simonbuilds";
+  home.username = builtins.getEnv "USER";
+  home.homeDirectory = builtins.getEnv "HOME";
 
   # Allow unfree packages as well
   nixpkgs.config.allowUnfree = true;
