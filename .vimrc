@@ -59,9 +59,16 @@ Plug 'chriskempson/base16-vim', Cond(!exists('g:vscode'))
 
 call plug#end()
 
-" Set colorscheme
-colorscheme base16-onedark
-set termguicolors
+" Plain Neovim Only options
+if !exists('g:vscode')
+
+  " enable ncm2 for all buffers
+  autocmd BufEnter * call ncm2#enable_for_buffer()
+  " Set colorscheme
+  colorscheme base16-onedark
+  set termguicolors
+
+endif
 
 " Other settings
 :set number
@@ -93,9 +100,6 @@ map <C-e> :NERDTreeToggle<CR>
 " easier sourcing of current file; noh is required because some setting always
 " puts the current character in search buffer after sourcing
 " nmap <C-S> :w<CR>:so %<CR>:noh<CR>
-
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
 
 " " IMPORTANT: :help Ncm2PopupOpen for more information
 set completeopt=noinsert,menuone,noselect
