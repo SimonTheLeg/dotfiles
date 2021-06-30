@@ -95,7 +95,6 @@
     nix-prefetch-github
     ngrok
     git-open
-    zsh-z
     scmpuff
   ];
 
@@ -108,7 +107,7 @@
     # Also I think this eliminiates traversing the fpath twice (once in standard nix and then once for oh-my-zsh)
     oh-my-zsh = {
       enable = true;
-      plugins = [ "terraform" "gitfast" "colored-man-pages" ];
+      plugins = [ "terraform" "gitfast" "colored-man-pages" "z" ];
     };
 
     # For now I have given up on managing all plugins and autocompletions via the zsh nix module. Reasons are:
