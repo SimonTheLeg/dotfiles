@@ -1,14 +1,5 @@
 { config, pkgs, ... }:
 
-# Workaround to get yarn 1.22 (and node 14.x) running for current setup. Might make sense to use a custom nix file and nix-shell for the future.
-let
-  yarnrev = import (builtins.fetchGit {
-      # Descriptive name to make the store path easier to identify
-      url = "https://github.com/NixOS/nixpkgs/";
-      ref = "refs/heads/nixpkgs-unstable";
-      rev = "e1c6965beb89e861ec5b4f2d9d75c89f8bc8bfa8";
-  }) {};
-in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -78,7 +69,7 @@ in
     neovim
     niv
     nnn
-    nodejs
+    nodejs-12_x
     oh-my-zsh
     postgresql
     protobuf
@@ -100,7 +91,7 @@ in
     vim
     watch
     wget
-    yarnrev.yarn
+    yarn
     nix-prefetch-github
     ngrok
     git-open
