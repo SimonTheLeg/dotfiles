@@ -88,6 +88,7 @@
     ngrok
     git-open
     scmpuff
+    google-cloud-sdk
   ];
 
   programs.zsh = {
