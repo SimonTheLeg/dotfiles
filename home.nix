@@ -89,6 +89,7 @@
     git-open
     scmpuff
     google-cloud-sdk
+    google-clasp
   ];
 
   programs.zsh = {
