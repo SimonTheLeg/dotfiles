@@ -24,7 +24,6 @@
 
   home.packages = with pkgs; [
     apg
-    aws
     azure-cli
     bash
     bat
