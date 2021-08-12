@@ -1,14 +1,6 @@
 { config, pkgs, ... }:
 
-# Workaround to get yarn 1.22 (and node 14.x) running for current setup. Might make sense to use a custom nix file and nix-shell for the future.
-let
-  yarnrev = import (builtins.fetchGit {
-      # Descriptive name to make the store path easier to identify
-      url = "https://github.com/NixOS/nixpkgs/";
-      ref = "refs/heads/nixpkgs-unstable";
-      rev = "e1c6965beb89e861ec5b4f2d9d75c89f8bc8bfa8";
-  }) {};
-in
+# Workaround to get yarn 1.19.2 (and node 12.x) running for current setup. Might make sense to use a custom nix file and nix-shell for the future.
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -30,6 +22,12 @@ in
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "21.05";
+
+  nixpkgs.overlays = [ 
+    (self: super: {
+      yarn = super.yarn.override { nodejs = pkgs.nodejs-12_x; };
+    })
+  ];
 
   home.packages = with pkgs; [
     apg
@@ -70,7 +68,7 @@ in
     neovim
     niv
     nnn
-    nodejs
+    nodejs-12_x
     oh-my-zsh
     postgresql
     protobuf
@@ -92,7 +90,7 @@ in
     vim
     watch
     wget
-    yarnrev.yarn
+    yarn
     nix-prefetch-github
     ngrok
     git-open
