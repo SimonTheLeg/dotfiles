@@ -127,24 +127,14 @@
           sha256 = "KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
         };
       }
-      # {
-      #   name = "zsh-autosuggestions";
-      #   file = "zsh-autosuggestions.plugin.zsh";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "zsh-users";
-      #     repo = "zsh-autosuggestions";
-      #     rev = "v0.7.0";
-      #     sha256 = "KLUYpUu4DHRumQZ3w59m9aTW6TBKMCXl2UcKi4uMd7w=";
-      #   };
-      # }
       {
-        name = "zsh-autocomplete";
-        file = "zsh-autocomplete.plugin.zsh";
+        name = "zsh-syntax-highlighting";
+        file = "zsh-syntax-highlighting.plugin.zsh";
         src = pkgs.fetchFromGitHub {
-          owner ="marlonrichert";
-          repo = "zsh-autocomplete";
-          rev = "21.06.16";
-          sha256 = "4HslOPaV+ko6riU8NDb9UIdemV7qhLez2jN/kOD04a0=";
+          owner = "zsh-users";
+          repo = "zsh-syntax-highlighting";
+          rev = "0.7.0";
+          sha256 = "O/qx+Wpj10WKajqdbITP19W7FwlhlYNVSRAyZqTT7Rk=";
         };
       }
       # {
