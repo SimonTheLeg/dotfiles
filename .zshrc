@@ -19,14 +19,19 @@ export EDITOR='nvim'
 export TERM=xterm-256color
 
 # Set up gs as alias for git
-alias gs='git status'
+alias gs='scmpuff_status'
+alias ga='git add'
+alias gd='git diff'
 alias gp='git push'
-alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gl="git lg"
 alias gc='git commit'
 alias gcm='git commit --amend'
 alias gdc='git diff --cached'
 alias gap='git add -p'
 alias gpl='git pull'
+alias gcb='git checkout -b'
+alias grb='git rebase'
+alias grbi='git rebase -i'
 
 # Kubernetes Aliases
 alias kc='kubectl'
@@ -115,7 +120,7 @@ if [ -f '${HOME}/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/simonbei
 eval "$(pyenv init -)"
 
 # Source scmpuff
-scmpuff init -s | source /dev/stdin
+scmpuff init -s --aliases=false | source /dev/stdin
 
 # Automatically reset the cursor to beam after exiting vim
 autoload -U add-zsh-hook
@@ -128,7 +133,6 @@ add-zsh-hook -Uz precmd vim
 complete -C "~/.local/bin/aws_completer" aws
 
 # Custom fzf parsing
-unalias gco
 gco() {
   local tags branches target
   if (( $# > 0 )); then
