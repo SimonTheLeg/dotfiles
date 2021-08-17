@@ -8,7 +8,6 @@ simply run the script
 ./linkall.sh
 ```
 
-
 ## On a new system
 
 ### One time setup
@@ -20,6 +19,12 @@ simply run the script
   ```
 
 ### For each user on the system one time
+
+1. Clone the repository into `~/simontheleg/`
+
+  ```sh
+  git clone https://github.com/SimonTheLeg/dotfiles.git ~/simontheleg
+  ```
 
 2. Add the unstable channel as nixpkgs
 

@@ -1,14 +1,21 @@
 { config, pkgs, ... }:
 
-# Workaround to get yarn 1.19.2 (and node 12.x) running for current setup. Might make sense to use a custom nix file and nix-shell for the future.
+let
+  username = builtins.getEnv "USER";
+  homeDir = builtins.getEnv "HOME";
+  # Currently I have fixated this to $HOME/simontheleg/dotfiles to sync it across multiple machines and/or
+  # multiple users per machine, as it only comes with the limitation to always clone the repository into
+  # that directory
+  dotFilesDir = "${homeDir}/simontheleg/dotfiles";
+in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = builtins.getEnv "USER";
-  home.homeDirectory = builtins.getEnv "HOME";
+  home.username = username;
+  home.homeDirectory = homeDir;
 
   # Allow unfree packages as well
   nixpkgs.config.allowUnfree = true;
@@ -102,7 +109,7 @@
   programs.zsh = {
     enable = true;
 
-    initExtra = builtins.readFile /Users/simonbuilds/streams/dotfiles/.zshrc;
+    initExtra = builtins.readFile "${dotFilesDir}/.zshrc";
 
     # Reason why I want to manage oh-my-zsh in here instead of in .zshrc is simply to have both installation and management in a single place
     # Also I think this eliminiates traversing the fpath twice (once in standard nix and then once for oh-my-zsh)
