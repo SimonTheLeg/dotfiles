@@ -124,6 +124,9 @@ function vim () {
 }
 add-zsh-hook -Uz precmd vim
 
+# AWS CLI completion
+complete -C "~/.local/bin/aws_completer" aws
+
 # Custom fzf parsing
 unalias gco
 gco() {

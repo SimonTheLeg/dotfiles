@@ -105,6 +105,7 @@ in
     scmpuff
     google-cloud-sdk
     google-clasp
+    awscli2
   ];
 
   programs.zsh = {
