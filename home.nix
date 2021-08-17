@@ -30,6 +30,7 @@ in
   # changes in each release.
   home.stateVersion = "21.05";
 
+  # Workaround to get yarn 1.19.2 (and node 12.x) running for current setup. Might make sense to use a custom nix file and nix-shell for the future.
   nixpkgs.overlays = [ 
     (self: super: {
       yarn = super.yarn.override { nodejs = pkgs.nodejs-12_x; };
