@@ -51,6 +51,9 @@ Plug 'pbogut/fzf-mru.vim', Cond(!exists('g:vscode'))
 Plug 'christoomey/vim-tmux-navigator', Cond(!exists('g:vscode'))
 Plug 'chriskempson/base16-vim', Cond(!exists('g:vscode'))
 Plug 'mhinz/vim-startify', Cond(!exists('g:vscode'))
+Plug 'nvim-lua/popup.nvim', Cond(!exists('g:vscode'))
+Plug 'nvim-lua/plenary.nvim', Cond(!exists('g:vscode'))
+Plug 'nvim-telescope/telescope.nvim', Cond(!exists('g:vscode'))
 Plug 'chrisbra/NrrwRgn', Cond(!exists('g:vscode'))
 
 " Plugins to use inside VSCode nvim
@@ -202,14 +205,6 @@ autocmd SwapExists * let v:swapchoice = 'e' "since we are using autosave, it is 
 " make search case insensitive
 :set ignorecase
 
-" " Allow for persistent undo
-" " => not needed anymore as it is default in nvim
-" try
-"     set undodir=~/.vim_runtime/temp_dirs/undodir
-"     set undofile
-" catch
-" endtry
-
 " Remember more files
 let MRU_Max_Entries = 1000
 " map <C-m> :FZFMru <CR>
@@ -222,54 +217,10 @@ let MRU_Max_Entries = 1000
 " nnoremap <silent> <C-w>l :TmuxNavigateRight<cr>
 " nnoremap <silent> <C-w>\ :TmuxNavigatePrevious<cr>
 
-" setting up fzf and ripgrep
-" Border color
-let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.9, 'height': 0.9,'yoffset':0.5,'xoffset': 0.5, 'border': 'sharp' }}
-
-let $FZF_DEFAULT_OPTS = "--ansi --layout=reverse --info=inline --preview 'bat --theme=TwoDark --color=always --style=header,grid --line-range :300 {}'"
-let $FZF_DEFAULT_COMMAND='rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor}/*"'
-
-
-" Customize fzf colors to match vims color scheme
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
-"Get Files
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-
-" Get text in files with Rg
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-" Ripgrep advanced
-function! RipgrepFzf(query, fullscreen)
-  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
-  let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-endfunction
 " Disable quote header for startify
 let g:startify_custom_header = []
 let g:startify_padding_left = 50 " Hard coded padding for lists
 
-command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 let g:nrrw_rgn_nohl = 1
 " Always disable automatic writing back, as I mainly use NR for viewing
 " certificates
