@@ -110,6 +110,7 @@ in
     kubernetes-helm
     kind
     fluxcd
+    zsh-z
   ];
 
   programs.zsh = {
