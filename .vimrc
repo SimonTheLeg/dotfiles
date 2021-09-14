@@ -51,6 +51,7 @@ Plug 'pbogut/fzf-mru.vim', Cond(!exists('g:vscode'))
 Plug 'christoomey/vim-tmux-navigator', Cond(!exists('g:vscode'))
 Plug 'chriskempson/base16-vim', Cond(!exists('g:vscode'))
 Plug 'mhinz/vim-startify', Cond(!exists('g:vscode'))
+Plug 'chrisbra/NrrwRgn', Cond(!exists('g:vscode'))
 
 " Plugins to use inside VSCode nvim
 "
@@ -269,4 +270,10 @@ let g:startify_custom_header = []
 let g:startify_padding_left = 50 " Hard coded padding for lists
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+let g:nrrw_rgn_nohl = 1
+" Always disable automatic writing back, as I mainly use NR for viewing
+" certificates
+let b:nrrw_aucmd_create = ":NRN"
+let g:nrrw_rgn_resize_window = "relative"
+let g:nrrw_rgn_rel_min = 30
 
