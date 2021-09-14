@@ -106,6 +106,7 @@ in
     google-cloud-sdk
     google-clasp
     awscli2
+    operator-sdk
   ];
 
   programs.zsh = {
