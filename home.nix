@@ -109,6 +109,7 @@ in
     operator-sdk
     kubernetes-helm
     kind
+    fluxcd
   ];
 
   programs.zsh = {
