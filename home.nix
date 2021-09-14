@@ -112,6 +112,7 @@ in
     fluxcd
     zsh-z
     kustomize
+    asciinema
   ];
 
   programs.zsh = {
