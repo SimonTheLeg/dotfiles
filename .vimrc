@@ -50,6 +50,7 @@ Plug 'jlanzarotta/bufexplorer', Cond(!exists('g:vscode'))
 Plug 'pbogut/fzf-mru.vim', Cond(!exists('g:vscode'))
 Plug 'christoomey/vim-tmux-navigator', Cond(!exists('g:vscode'))
 Plug 'chriskempson/base16-vim', Cond(!exists('g:vscode'))
+Plug 'mhinz/vim-startify', Cond(!exists('g:vscode'))
 
 " Plugins to use inside VSCode nvim
 "
@@ -263,6 +264,9 @@ function! RipgrepFzf(query, fullscreen)
   let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
+" Disable quote header for startify
+let g:startify_custom_header = []
+let g:startify_padding_left = 50 " Hard coded padding for lists
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 
