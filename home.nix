@@ -111,6 +111,7 @@ in
     kind
     fluxcd
     zsh-z
+    kustomize
   ];
 
   programs.zsh = {
