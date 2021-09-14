@@ -108,6 +108,7 @@ in
     awscli2
     operator-sdk
     kubernetes-helm
+    kind
   ];
 
   programs.zsh = {
