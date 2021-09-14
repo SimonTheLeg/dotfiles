@@ -107,6 +107,7 @@ in
     google-clasp
     awscli2
     operator-sdk
+    kubernetes-helm
   ];
 
   programs.zsh = {
