@@ -116,9 +116,6 @@ if [ -f '${HOME}/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/simonbein/goog
 # The next line enables shell command completion for gcloud.
 if [ -f '${HOME}/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/completion.zsh.inc'; fi
 
-# Initialize pyenv paths
-eval "$(pyenv init -)"
-
 # Source scmpuff
 scmpuff init -s --aliases=false | source /dev/stdin
 
