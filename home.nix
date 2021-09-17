@@ -150,7 +150,7 @@ in
           owner = "zsh-users";
           repo = "zsh-syntax-highlighting";
           rev = "0.7.0";
-          sha256 = "O/qx+Wpj10WKajqdbITP19W7FwlhlYNVSRAyZqTT7Rk=";
+          sha256 = "sha256-eRTk0o35QbPB9kOIV0iDwd0j5P/yewFFISVS/iEfP2g=";
         };
       }
       # {
