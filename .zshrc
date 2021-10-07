@@ -104,20 +104,10 @@ PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # custom path aliasing for pip installed packages
 PATH="${HOME}/.local/bin:$PATH"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="${HOME}/.sdkman"
-[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/simonbein/.sdkman/bin/sdkman-init.sh"
-
 # source goenv
 export GOENV_ROOT="$HOME/.goversions"
 PATH="$HOME/.goenv/bin:$PATH"
 goenv init - | source /dev/stdin
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '${HOME}/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '${HOME}/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Source scmpuff
 scmpuff init -s --aliases=false | source /dev/stdin
