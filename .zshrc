@@ -32,6 +32,7 @@ alias gpl='git pull'
 alias gcb='git checkout -b'
 alias grb='git rebase'
 alias grbi='git rebase -i'
+alias cdg='cd $(git rev-parse --show-cdup)'
 
 # Kubernetes Aliases
 alias kc='kubectl'
@@ -56,17 +57,13 @@ source ~/.iterm2_shell_integration.zsh
 # Stern autocompletion
 source <(stern --completion=zsh)
 
-# Azure CLI autocomplete
-[ -s "/usr/local/etc/bash_completion.d/az" ] && source "/usr/local/etc/bash_completion.d/az"
-
 # Exa alias
 alias ls='exa'
 alias exa='exa --long --git'
 
 # Bat alias
 alias cat='bat --theme "TwoDark"'
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/vault vault
+# autoload -U +X bashcompinit && bashcompinit
 
 # Other Alias
 alias cl='clear'
@@ -74,7 +71,6 @@ alias tf='terraform'
 alias dc='docker-compose'
 alias sp='spotify'
 alias fk='fly -t k'
-alias cdg='cd $(git rev-parse --show-cdup)'
 alias pass='gopass'
 
 if [ -n "${commands[fzf-share]}" ]; then
@@ -98,9 +94,6 @@ _fzf_complete_pass() {
 # Gopass
 source <(gopass completion bash)
 
-# krew custom path aliasing
-PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
 # custom path aliasing for pip installed packages
 PATH="${HOME}/.local/bin:$PATH"
 
@@ -118,9 +111,6 @@ function vim () {
   printf "\x1b[\x36 q" 
 }
 add-zsh-hook -Uz precmd vim
-
-# AWS CLI completion
-complete -C "~/.local/bin/aws_completer" aws
 
 # Custom fzf parsing
 gco() {
