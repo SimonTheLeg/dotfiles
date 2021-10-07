@@ -1,16 +1,6 @@
 # Collection of dotfiles and other settings
 
-## Linking common dotfiles
-
-simply run the script
-
-```shell
-./linkall.sh
-```
-
-## On a new system
-
-### One time setup
+## One time setup
 
 1. Install nix. Note for future Simon: With nix 2.4 this feature will be moved upstream
 
@@ -18,7 +8,7 @@ simply run the script
   sh <(curl https://abathur-nix-install-tests.cachix.org/serve/yihf8zbs0jwph2rs9qfh80dnilijxdi2/install) --tarball-url-prefix https://abathur-nix-install-tests.cachix.org/serve
   ```
 
-### For each user on the system one time
+## For each user on the system one time
 
 1. Clone the repository into `~/simontheleg/`
 

@@ -115,6 +115,13 @@ in
   ];
 
   home.file = {
+    ".tmux.conf".source = "${dotFilesDir}/.tmux.conf";
+    ".vimrc".source = "${dotFilesDir}/.vimrc";
+    ".gitconfig".source = "${dotFilesDir}/.gitconfig";
+    ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/starship.toml"; # mkOutOfStoreSymlink is needed so starship can write into the file
+    ".config/nvim/init.vim".source = "${dotFilesDir}/init.vim";
+    ".kube/kubie.yaml".source = "${dotFilesDir}/kubie.yaml";
+
     ".goenv/".source = pkgs.fetchFromGitHub {
       owner = "syndbg";
       repo = "goenv";
