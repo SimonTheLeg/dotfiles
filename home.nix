@@ -66,7 +66,7 @@ in
     jq
     json2hcl
     kubectl
-    kubectx
+    kubie
     librsvg
     lorri
     minikube
