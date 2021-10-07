@@ -108,7 +108,10 @@ PATH="${HOME}/.local/bin:$PATH"
 export SDKMAN_DIR="${HOME}/.sdkman"
 [[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/simonbein/.sdkman/bin/sdkman-init.sh"
 
-[[ -s "${HOME}/.gvm/scripts/gvm" ]] && source "/Users/simonbein/.gvm/scripts/gvm"
+# source goenv
+export GOENV_ROOT="$HOME/.goversions"
+PATH="$HOME/.goenv/bin:$PATH"
+goenv init - | source /dev/stdin
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '${HOME}/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/simonbein/google-cloud-sdk/path.zsh.inc'; fi

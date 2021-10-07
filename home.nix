@@ -61,7 +61,6 @@ in
     gopass
     gradle
     hugo
-    go
     istioctl
     jq
     json2hcl
@@ -114,6 +113,15 @@ in
     kustomize
     asciinema
   ];
+
+  home.file = {
+    ".goenv/".source = pkgs.fetchFromGitHub {
+      owner = "syndbg";
+      repo = "goenv";
+      rev = "abde8693ab55aef279d19f5bf0a146c414bac45b";
+      sha256 = "sha256-Jb0x0cLEA6c0hfq9M2EeE25jE55m0rvqjNLMfedQdI4=";
+    };
+  };
 
   programs.zsh = {
     enable = true;
