@@ -30,10 +30,29 @@ in
   # changes in each release.
   home.stateVersion = "21.05";
 
-  # Workaround to get yarn 1.19.2 (and node 12.x) running for current setup. Might make sense to use a custom nix file and nix-shell for the future.
   nixpkgs.overlays = [ 
     (self: super: {
+      # Workaround to get yarn 1.19.2 (and node 12.x) running for current setup. Might make sense to use a custom nix file and nix-shell for the future.
       yarn = super.yarn.override { nodejs = pkgs.nodejs-12_x; };
+
+      # Switch to yq version 3 for Kubermatic. Might make sense to extract this into a custom nix file for directoy nix-shell in the future
+      yq-go3 =
+        let
+          version = "3.4.1";
+          src = pkgs.fetchFromGitHub {
+          owner = "mikefarah";
+          repo = "yq";
+          rev = version;
+          sha256 = "sha256-K3mWo5wFKWxSel8y/b6N02/BoB/KuTbHhVJrVYLCbCY=";
+          };
+        in
+          (pkgs.yq-go.override rec {
+            buildGoModule = args: pkgs.buildGoModule.override {} (args // {
+              inherit src version;
+              vendorSha256 = "sha256-jT0/4wjpj5kBULXIC+bupHOnp0n9sk4WJAC7hu6Cq1A=";
+            });
+          });
+
     })
   ];
 
@@ -112,6 +131,7 @@ in
     zsh-z
     kustomize
     asciinema
+    yq-go3
   ];
 
   home.file = {
