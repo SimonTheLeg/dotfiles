@@ -131,3 +131,6 @@ gco() {
         --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
   git checkout $(awk '{print $2}' <<<"$target" )
 }
+
+# Enable direnv
+eval "$(direnv hook zsh)"
