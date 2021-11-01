@@ -131,6 +131,7 @@ in
     zsh-z
     kustomize
     asciinema
+    vault
     yq-go3
   ];
 
