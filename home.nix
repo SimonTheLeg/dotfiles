@@ -136,6 +136,11 @@ in
       sha256 = "sha256-qYBMDLIEkgiTFxjlF8AHn31HZ4nt/ZoeerzX70SSBaM=";
     });
 
+    ".local/share/nvim/site/autoload/plug.vim".source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
+      sha256 = "sha256-VgaLrLphI8TsVB85iJM/3cf5wee0+bCmfzrZPf1t9L4=";
+    };
+
   };
 
   programs.zsh = {
