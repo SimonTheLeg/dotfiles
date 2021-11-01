@@ -128,6 +128,14 @@ in
       rev = "abde8693ab55aef279d19f5bf0a146c414bac45b";
       sha256 = "sha256-Jb0x0cLEA6c0hfq9M2EeE25jE55m0rvqjNLMfedQdI4=";
     };
+
+    ".tmux/plugins/tpm".source = config.lib.file.mkOutOfStoreSymlink ( pkgs.fetchFromGitHub {
+      owner = "tmux-plugins";
+      repo = "tpm";
+      rev = "v3.0.0";
+      sha256 = "sha256-qYBMDLIEkgiTFxjlF8AHn31HZ4nt/ZoeerzX70SSBaM=";
+    });
+
   };
 
   programs.zsh = {
