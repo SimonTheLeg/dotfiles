@@ -141,6 +141,11 @@ in
       sha256 = "sha256-VgaLrLphI8TsVB85iJM/3cf5wee0+bCmfzrZPf1t9L4=";
     };
 
+    ".iterm2_shell_integration.zsh".source = pkgs.fetchurl {
+      url = "https://iterm2.com/shell_integration/zsh";
+      sha256 = "sha256-pNn1unJyAU8QihQoHV7aIZA1s2iyloAG9hdV19/zaMA=";
+    };
+
   };
 
   programs.zsh = {
