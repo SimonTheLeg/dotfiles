@@ -40,8 +40,6 @@ alias kcd='kubectl describe'
 alias kcl='kubectl logs'
 alias kcg='kubectl get'
 alias wkc='watch kubectl'
-alias dkc='kubectl --context ambid-dev-app-admin'
-alias skc='kubectl --context ambid-stg-app-admin'
 alias kcwn='kc get pods --all-namespaces -o custom-columns=NAMESPACE:.metadata.namespace,NAME:.metadata.name,NODE:.spec.nodeName'
 
 # Change `kubectl edit` editor to vim
