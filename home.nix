@@ -135,6 +135,7 @@ in
     yq-go3
     prometheus
     kubebuilder
+    htop
   ];
 
   home.file = {
