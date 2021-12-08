@@ -130,5 +130,8 @@ gco() {
   git checkout $(awk '{print $2}' <<<"$target" )
 }
 
+# kubectl autocomplete
+source <(kubectl completion zsh)
+
 # Enable direnv
 eval "$(direnv hook zsh)"
