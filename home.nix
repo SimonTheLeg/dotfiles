@@ -133,6 +133,7 @@ in
     asciinema
     vault
     yq-go3
+    prometheus
   ];
 
   home.file = {
