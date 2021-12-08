@@ -134,6 +134,7 @@ in
     vault
     yq-go3
     prometheus
+    kubebuilder
   ];
 
   home.file = {
