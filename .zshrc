@@ -99,6 +99,7 @@ PATH="${HOME}/.local/bin:$PATH"
 export GOENV_ROOT="$HOME/.goversions"
 PATH="$HOME/.goenv/bin:$PATH"
 goenv init - | source /dev/stdin
+export PATH="${PATH}:${HOME}/.krew/bin"
 
 # Source scmpuff
 scmpuff init -s --aliases=false | source /dev/stdin

@@ -136,6 +136,7 @@ in
     prometheus
     kubebuilder
     htop
+    krew
   ];
 
   home.file = {
