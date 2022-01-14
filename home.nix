@@ -136,6 +136,7 @@ in
     prometheus
     kubebuilder
     htop
+    sops
     krew
   ];
 
