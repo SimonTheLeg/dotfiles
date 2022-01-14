@@ -16,6 +16,8 @@
   rebase = true
 [fetch]
   prune = true
+[init]
+	defaultBranch = main
 [credential "https://source.developers.google.com"]
 	helper = gcloud.sh
 [filter "lfs"]
