@@ -1,10 +1,6 @@
 # Source home-manager
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 
-# Temporarily set locale, to solve https://discourse.brew.sh/t/failed-to-set-locale-category-lc-numeric-to-en-ru/5092/24
-# Until I have time to find a more permanent solution
-export LANG=en_US.UTF-8
-
 # Load the starship theme
 eval "$(starship init zsh)"
 
