@@ -141,6 +141,7 @@ in
   ];
 
   home.file = {
+    ".zprofile".source = "${dotFilesDir}/.zprofile";
     ".tmux.conf".source = "${dotFilesDir}/.tmux.conf";
     ".vimrc".source = "${dotFilesDir}/.vimrc";
     ".gitconfig".source = "${dotFilesDir}/.gitconfig";
