@@ -174,6 +174,11 @@ in
       sha256 = "sha256-pNn1unJyAU8QihQoHV7aIZA1s2iyloAG9hdV19/zaMA=";
     };
 
+    ".rupaz/z.sh".source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/rupa/z/v1.11/z.sh";
+      sha256 = "sha256-8k4HkboQ9qgwFGHaP8UDM+7i4Amhnl0OnzZh8NBEZ2c=";
+    };
+
   };
 
   programs.zsh = {
@@ -185,7 +190,7 @@ in
     # Also I think this eliminiates traversing the fpath twice (once in standard nix and then once for oh-my-zsh)
     oh-my-zsh = {
       enable = true;
-      plugins = [ "z" ];
+      plugins = [];
     };
 
     # For now I have given up on managing all plugins and autocompletions via the zsh nix module. Reasons are:

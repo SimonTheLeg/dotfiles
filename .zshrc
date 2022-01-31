@@ -144,3 +144,5 @@ export KUBECONFIG=$(konf-go --silent set -)
 # terraform auto-completion
 complete -o nospace -C /Users/simonbein/.nix-profile/bin/terraform terraform
 
+# rupa/z
+source $HOME/.rupaz/z.sh
