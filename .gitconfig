@@ -3,6 +3,7 @@
 [user]
 	name = Simon Bein
 	email = simontheleg@gmail.com
+	signingkey = 8A8A68258B4E118E
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
 	excludesfile = /Users/simonbein/.gitignore
