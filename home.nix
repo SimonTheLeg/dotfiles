@@ -84,7 +84,6 @@ in
     jq
     json2hcl
     kubectl
-    kubie
     librsvg
     lorri
     minikube

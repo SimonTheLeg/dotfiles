@@ -41,10 +41,6 @@ alias kcwn='kc get pods --all-namespaces -o custom-columns=NAMESPACE:.metadata.n
 # Change `kubectl edit` editor to vim
 export KUBE_EDITOR='nvim'
 
-# Aliases for kubie
-alias kns='kubie ns'
-alias kctx='kubie ctx'
-
 # iTerm shell integration (https://www.iterm2.com/documentation-shell-integration.html)
 source ~/.iterm2_shell_integration.zsh
 
@@ -132,3 +128,16 @@ source <(kubectl completion zsh)
 
 # Enable direnv
 eval "$(direnv hook zsh)"
+
+# mandatory konf settings
+source <(konf-go shellwrapper zsh)
+
+# optional konf settings
+# Alias
+alias kctx="konf set"
+alias kns="konf ns"
+# Open last konf on new session
+export KUBECONFIG=$(konf-go --silent set -)
+# Auto-completion
+# source <(konf-go completion zsh)
+
