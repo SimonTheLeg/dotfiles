@@ -141,3 +141,6 @@ export KUBECONFIG=$(konf-go --silent set -)
 # Auto-completion
 # source <(konf-go completion zsh)
 
+# terraform auto-completion
+complete -o nospace -C /Users/simonbein/.nix-profile/bin/terraform terraform
+
