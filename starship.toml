@@ -2,12 +2,12 @@ add_newline = false
 command_timeout = 750
 
 [kubernetes]
-disabled=false
-style="blue"
+disabled = false
+style = 'blue'
 
 [directory]
-style="green"
-truncate_to_repo=false
+style = 'green'
+truncate_to_repo = false
 
 [jobs]
 threshold = 2
