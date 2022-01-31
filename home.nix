@@ -139,6 +139,7 @@ in
     sops
     krew
     sonobuoy
+    act
   ];
 
   home.file = {
