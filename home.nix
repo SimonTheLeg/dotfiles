@@ -138,6 +138,7 @@ in
     htop
     sops
     krew
+    sonobuoy
   ];
 
   home.file = {
