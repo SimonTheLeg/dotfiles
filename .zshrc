@@ -32,6 +32,9 @@ alias gcb='git checkout -b'
 alias grb='git rebase'
 alias grbi='git rebase -i'
 alias cdg='cd $(git rev-parse --show-cdup)'
+alias gsf='git diff-tree --no-commit-id --name-only -r'
+alias gf='git fetch'
+alias gfa='git fetch --all'
 
 # Kubernetes Aliases
 alias kc='kubectl'
