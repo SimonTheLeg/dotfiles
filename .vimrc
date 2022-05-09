@@ -193,6 +193,12 @@ vnoremap <silent> <leader>btoa :<c-u>call base64#v_btoa()<cr>
 
 " Always enable autosave plugin
 let g:auto_save = 1
+" Disable autosave for git-commit messages
+augroup git_commit_msg
+  au!
+  au FileType gitcommit let b:auto_save = 0
+augroup END
+
 autocmd SwapExists * let v:swapchoice = 'e' "since we are using autosave, it is safe to open the file every time
 
 " " vim-schlepp bindings
