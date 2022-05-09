@@ -138,6 +138,15 @@ in
     krew
     sonobuoy
     act
+    findutils
+    bash-completion
+    imagemagick
+    gifsicle
+    pv
+    coreutils
+    golangci-lint
+    grpcurl
+    git-filter-repo
   ];
 
   home.file = {
