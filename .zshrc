@@ -1,3 +1,6 @@
+# Load also bash completion funcs (zsh completion funcs will automatically be loaded by home-manager)
+autoload -U bashcompinit && bashcompinit
+
 # Source home-manager
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 
