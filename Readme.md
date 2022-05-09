@@ -16,10 +16,10 @@
   git clone git@github.com:SimonTheLeg/dotfiles.git ~/simontheleg/dotfiles
   ```
 
-2. Add the unstable channel as nixpkgs
+2. Add a channel as nixpkgs. This is mainly to make home-manager happy. It does not server any further purpose, as all channels used are pinned in `home.nix`:
 
   ```sh
-  nix-channel --add https://channels.nixos.org/nixpkgs-unstable nixpkgs
+  nix-channel --add https://channels.nixos.org/nixos-21.11 nixpkgs
   nix-channel --update
   ```
 

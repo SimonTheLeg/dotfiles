@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 let
   username = builtins.getEnv "USER";
@@ -8,12 +8,24 @@ let
   # that directory
   dotFilesDir = "${homeDir}/simontheleg/dotfiles";
 
-  unstablecommit = "934e076a441e318897aa17540f6cf7caadc69028";
+  # pin stable and unstable channels to specific commits
+  nixstablecommit = "3c5ae9be1f18c790ea890ef8decbd0946c0b4c04";
+  nixunstablecommit = "934e076a441e318897aa17540f6cf7caadc69028";
+  
+  pkgs = import (builtins.fetchGit {
+       name = "nixpkgs-stable";
+       url = "https://github.com/nixos/nixpkgs.git";
+       ref = "refs/heads/nixos-21.11";
+       rev = "${nixstablecommit}";
+  }) {
+      config= { allowUnfree = true ; } ;
+  };
+
   pkgs_unstable = import (builtins.fetchGit {
        name = "nixpkgs-unstable";
        url = "https://github.com/nixos/nixpkgs.git";
        ref = "refs/heads/nixpkgs-unstable";
-       rev = "${unstablecommit}";
+       rev = "${nixunstablecommit}";
   }) {
       config= { allowUnfree = true ; } ;
       overlays = [
@@ -44,7 +56,8 @@ let
 
         })
       ];
-    } ;
+    };
+
 in
 {
   # Let Home Manager install and manage itself.
