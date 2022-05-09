@@ -142,10 +142,10 @@ source <(konf-go shellwrapper zsh)
 # Alias
 alias kctx="konf set"
 alias kns="konf ns"
-# Open last konf on new session
-export KUBECONFIG=$(konf-go --silent set -)
-# Auto-completion
-# source <(konf-go completion zsh)
+# Open last konf on new session (use --silent to suppress INFO log line)
+konf --silent set -
+# Autocompletion. Currently supported shells: zsh
+source <(konf completion zsh)
 
 # terraform auto-completion
 complete -o nospace -C /Users/simonbein/.nix-profile/bin/terraform terraform
