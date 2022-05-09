@@ -7,6 +7,44 @@ let
   # multiple users per machine, as it only comes with the limitation to always clone the repository into
   # that directory
   dotFilesDir = "${homeDir}/simontheleg/dotfiles";
+
+  unstablecommit = "934e076a441e318897aa17540f6cf7caadc69028";
+  pkgs_unstable = import (builtins.fetchGit {
+       name = "nixpkgs-unstable";
+       url = "https://github.com/nixos/nixpkgs.git";
+       ref = "refs/heads/nixpkgs-unstable";
+       rev = "${unstablecommit}";
+  }) {
+      config= { allowUnfree = true ; } ;
+      overlays = [
+        (self: super: {
+
+          # currently needed as buildGo18Module is not yet supported in Darwin (https://github.com/NixOS/nixpkgs/issues/168984)
+          golangci-lint = super.golangci-lint.override {
+            buildGoModule = super.buildGoModule;
+          };
+
+          # Switch to yq version 3 for Kubermatic. Might make sense to extract this into a custom nix file for directoy nix-shell in the future
+          yq-go3 =
+            let
+              version = "3.4.1";
+              src = pkgs.fetchFromGitHub {
+              owner = "mikefarah";
+              repo = "yq";
+              rev = version;
+              sha256 = "sha256-K3mWo5wFKWxSel8y/b6N02/BoB/KuTbHhVJrVYLCbCY=";
+              };
+            in
+              (pkgs.yq-go.override rec {
+                buildGoModule = args: pkgs.buildGoModule.override {} (args // {
+                  inherit src version;
+                  vendorSha256 = "sha256-jT0/4wjpj5kBULXIC+bupHOnp0n9sk4WJAC7hu6Cq1A=";
+                });
+              });
+
+        })
+      ];
+    } ;
 in
 {
   # Let Home Manager install and manage itself.
@@ -16,9 +54,6 @@ in
   # paths it should manage.
   home.username = username;
   home.homeDirectory = homeDir;
-
-  # Allow unfree packages as well
-  nixpkgs.config.allowUnfree = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -30,33 +65,7 @@ in
   # changes in each release.
   home.stateVersion = "21.05";
 
-  nixpkgs.overlays = [ 
-    (self: super: {
-      # Workaround to get yarn 1.19.2 (and node 12.x) running for current setup. Might make sense to use a custom nix file and nix-shell for the future.
-      yarn = super.yarn.override { nodejs = pkgs.nodejs-12_x; };
-
-      # Switch to yq version 3 for Kubermatic. Might make sense to extract this into a custom nix file for directoy nix-shell in the future
-      yq-go3 =
-        let
-          version = "3.4.1";
-          src = pkgs.fetchFromGitHub {
-          owner = "mikefarah";
-          repo = "yq";
-          rev = version;
-          sha256 = "sha256-K3mWo5wFKWxSel8y/b6N02/BoB/KuTbHhVJrVYLCbCY=";
-          };
-        in
-          (pkgs.yq-go.override rec {
-            buildGoModule = args: pkgs.buildGoModule.override {} (args // {
-              inherit src version;
-              vendorSha256 = "sha256-jT0/4wjpj5kBULXIC+bupHOnp0n9sk4WJAC7hu6Cq1A=";
-            });
-          });
-
-    })
-  ];
-
-  home.packages = with pkgs; [
+  home.packages = with pkgs_unstable; [
     apg
     azure-cli
     bash
@@ -66,7 +75,6 @@ in
     diff-so-fancy
     direnv
     dive
-    docker
     etcd
     exa
     fzf
@@ -79,7 +87,6 @@ in
     gnused
     gopass
     gradle
-    hugo
     istioctl
     jq
     json2hcl
@@ -93,7 +100,6 @@ in
     neovim
     niv
     nnn
-    nodejs-12_x
     postgresql
     protobuf
     putty
@@ -114,7 +120,6 @@ in
     vim
     watch
     wget
-    yarn
     nix-prefetch-github
     ngrok
     git-open
@@ -148,6 +153,7 @@ in
     grpcurl
     git-filter-repo
   ];
+  # for future Simon: if I ever need more than one channel as source, here's how to do it https://discourse.nixos.org/t/nix-env-i-runs-out-of-memory-with-unstable-overlay/1517/3
 
   home.file = {
     ".zprofile".source = "${dotFilesDir}/.zprofile";
