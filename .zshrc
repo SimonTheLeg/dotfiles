@@ -20,11 +20,13 @@ export TERM=xterm-256color
 # Set up gs as alias for git
 alias gs='scmpuff_status'
 alias ga='git add'
+alias gb='git branch'
 alias gd='git diff'
 alias gp='git push'
 alias gl="git lg"
 alias gc='git commit'
 alias gcm='git commit --amend'
+alias gcmn='git commit --amend --no-edit'
 alias gdc='git diff --cached'
 alias gap='git add -p'
 alias gpl='git pull'
