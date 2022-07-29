@@ -38,6 +38,16 @@ alias gsf='git diff-tree --no-commit-id --name-only -r'
 alias gf='git fetch'
 alias gfa='git fetch --all'
 
+gpr() {
+  GH_USERNAME="SimonTheLeg"
+  # check if we are on a fork
+  if git remote -v | grep upstream &> /dev/null; then
+    gh pr view ${GH_USERNAME}:$(git branch --show-current) --web || gh pr create --web --head ${GH_USERNAME}:$(git branch --show-current)
+  else
+    gh pr view $(git branch --show-current) --web || gh pr create --web
+  fi
+}
+
 # Kubernetes Aliases
 alias kc='kubectl'
 alias kcd='kubectl describe'
