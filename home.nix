@@ -250,26 +250,6 @@ in
           sha256 = "sha256-eRTk0o35QbPB9kOIV0iDwd0j5P/yewFFISVS/iEfP2g=";
         };
       }
-      # {
-      #   name = "scm_breeze";
-      #   file = "scm_breeze.plugin.zsh";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "scmbreeze";
-      #     repo = "scm_breeze";
-      #     rev = "759c70d9cb4f1d87a0e3929fc67d22881cf80885";
-      #     sha256 = "16v70i6zcfw633wcmb31pfgflc00hg2h7km64rz1damvr63vyaqg";
-      #   };
-      # }
-      # {
-      #   name = "terraform";
-      #   file = "plugins/terraform/terraform.plugin.zsh";
-      #   src = pkgs.fetchFromGitHub {
-      #     owner = "ohmyzsh";
-      #     repo = "ohmyzsh";
-      #     rev = "706b2f3765d41bee2853b17724888d1a3f6f00d9";
-      #     sha256 = "06vfqp56s7xjv69vmn21man94vjx96zsg17x002zkmxjb4lfnkzh";
-      #   };
-      # }
     ];
   };
 }
