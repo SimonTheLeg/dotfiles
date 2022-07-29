@@ -255,3 +255,8 @@ if exists('g:vscode')
   nnoremap <leader>lp <Cmd>call VSCodeCall('editor.action.marker.next')<CR>
   nnoremap zi <Cmd>call VSCodeCall('editor.fold')<CR>
 endif
+
+" Keep visual selection after indenting
+:vnoremap < <gv
+:vnoremap > >gv
+
