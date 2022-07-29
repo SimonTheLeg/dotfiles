@@ -11,55 +11,51 @@ let
   # pin stable and unstable channels to specific commits
   nixstablecommit = "3c5ae9be1f18c790ea890ef8decbd0946c0b4c04";
   nixunstablecommit = "934e076a441e318897aa17540f6cf7caadc69028";
-  
+
   pkgs = import (builtins.fetchGit {
-       name = "nixpkgs-stable";
-       url = "https://github.com/nixos/nixpkgs.git";
-       ref = "refs/heads/nixos-21.11";
-       rev = "${nixstablecommit}";
-  }) {
-      config= { allowUnfree = true ; } ;
-  };
+    name = "nixpkgs-stable";
+    url = "https://github.com/nixos/nixpkgs.git";
+    ref = "refs/heads/nixos-21.11";
+    rev = "${nixstablecommit}";
+  }) { config = { allowUnfree = true; }; };
 
   pkgs_unstable = import (builtins.fetchGit {
-       name = "nixpkgs-unstable";
-       url = "https://github.com/nixos/nixpkgs.git";
-       ref = "refs/heads/nixpkgs-unstable";
-       rev = "${nixunstablecommit}";
+    name = "nixpkgs-unstable";
+    url = "https://github.com/nixos/nixpkgs.git";
+    ref = "refs/heads/nixpkgs-unstable";
+    rev = "${nixunstablecommit}";
   }) {
-      config= { allowUnfree = true ; } ;
-      overlays = [
-        (self: super: {
+    config = { allowUnfree = true; };
+    overlays = [
+      (self: super: {
 
-          # currently needed as buildGo18Module is not yet supported in Darwin (https://github.com/NixOS/nixpkgs/issues/168984)
-          golangci-lint = super.golangci-lint.override {
-            buildGoModule = super.buildGoModule;
+        # currently needed as buildGo18Module is not yet supported in Darwin (https://github.com/NixOS/nixpkgs/issues/168984)
+        golangci-lint =
+          super.golangci-lint.override { buildGoModule = super.buildGoModule; };
+
+        # Switch to yq version 3 for Kubermatic. Might make sense to extract this into a custom nix file for directoy nix-shell in the future
+        yq-go3 = let
+          version = "3.4.1";
+          src = pkgs.fetchFromGitHub {
+            owner = "mikefarah";
+            repo = "yq";
+            rev = version;
+            sha256 = "sha256-K3mWo5wFKWxSel8y/b6N02/BoB/KuTbHhVJrVYLCbCY=";
           };
+        in (pkgs.yq-go.override rec {
+          buildGoModule = args:
+            pkgs.buildGoModule.override { } (args // {
+              inherit src version;
+              vendorSha256 =
+                "sha256-jT0/4wjpj5kBULXIC+bupHOnp0n9sk4WJAC7hu6Cq1A=";
+            });
+        });
 
-          # Switch to yq version 3 for Kubermatic. Might make sense to extract this into a custom nix file for directoy nix-shell in the future
-          yq-go3 =
-            let
-              version = "3.4.1";
-              src = pkgs.fetchFromGitHub {
-              owner = "mikefarah";
-              repo = "yq";
-              rev = version;
-              sha256 = "sha256-K3mWo5wFKWxSel8y/b6N02/BoB/KuTbHhVJrVYLCbCY=";
-              };
-            in
-              (pkgs.yq-go.override rec {
-                buildGoModule = args: pkgs.buildGoModule.override {} (args // {
-                  inherit src version;
-                  vendorSha256 = "sha256-jT0/4wjpj5kBULXIC+bupHOnp0n9sk4WJAC7hu6Cq1A=";
-                });
-              });
+      })
+    ];
+  };
 
-        })
-      ];
-    };
-
-in
-{
+in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -180,7 +176,8 @@ in
     ".tmux.conf".source = "${dotFilesDir}/.tmux.conf";
     ".vimrc".source = "${dotFilesDir}/.vimrc";
     ".gitconfig".source = "${dotFilesDir}/.gitconfig";
-    ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/starship.toml"; # mkOutOfStoreSymlink is needed so starship can write into the file
+    ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink
+      "${dotFilesDir}/starship.toml"; # mkOutOfStoreSymlink is needed so starship can write into the file
     ".config/nvim/init.vim".source = "${dotFilesDir}/init.vim";
     ".kube/kubie.yaml".source = "${dotFilesDir}/kubie.yaml";
 
@@ -191,15 +188,17 @@ in
       sha256 = "sha256-dDEk0Eh8nOO5IgolTarRKWWLwK1ns0Ns0VJztAl0uos=";
     };
 
-    ".tmux/plugins/tpm".source = config.lib.file.mkOutOfStoreSymlink ( pkgs.fetchFromGitHub {
-      owner = "tmux-plugins";
-      repo = "tpm";
-      rev = "v3.0.0";
-      sha256 = "sha256-qYBMDLIEkgiTFxjlF8AHn31HZ4nt/ZoeerzX70SSBaM=";
-    });
+    ".tmux/plugins/tpm".source = config.lib.file.mkOutOfStoreSymlink
+      (pkgs.fetchFromGitHub {
+        owner = "tmux-plugins";
+        repo = "tpm";
+        rev = "v3.0.0";
+        sha256 = "sha256-qYBMDLIEkgiTFxjlF8AHn31HZ4nt/ZoeerzX70SSBaM=";
+      });
 
     ".local/share/nvim/site/autoload/plug.vim".source = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
+      url =
+        "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
       sha256 = "sha256-VgaLrLphI8TsVB85iJM/3cf5wee0+bCmfzrZPf1t9L4=";
     };
 
@@ -220,9 +219,7 @@ in
 
     initExtra = builtins.readFile "${dotFilesDir}/.zshrc";
 
-    oh-my-zsh = {
-      enable = true;
-    };
+    oh-my-zsh = { enable = true; };
 
     # For now I have given up on managing all plugins and autocompletions via the zsh nix module. Reasons are:
     # - it seems really tough install completion packages. e.g. terraform has its own completions, which is not managed by the plugin it self (see https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/terraform. And I could not find a way to install this
