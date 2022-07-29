@@ -234,3 +234,7 @@ let b:nrrw_aucmd_create = ":NRN"
 let g:nrrw_rgn_resize_window = "relative"
 let g:nrrw_rgn_rel_min = 30
 
+" turn hybrid line numbers on
+:set number relativenumber
+:set nu rnu
+
