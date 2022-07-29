@@ -162,7 +162,6 @@ in
     gifsicle
     pv
     coreutils
-    golangci-lint
     grpcurl
     git-filter-repo
   ];
