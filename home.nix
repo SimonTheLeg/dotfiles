@@ -164,6 +164,14 @@ in
     coreutils
     grpcurl
     git-filter-repo
+    nixfmt
+    python310
+    k9s
+    highlight
+    graphviz
+    goreleaser
+    minio-client
+    rakkess
   ];
   # for future Simon: if I ever need more than one channel as source, here's how to do it https://discourse.nixos.org/t/nix-env-i-runs-out-of-memory-with-unstable-overlay/1517/3
 
