@@ -187,8 +187,8 @@ in
     ".goenv/".source = pkgs.fetchFromGitHub {
       owner = "syndbg";
       repo = "goenv";
-      rev = "abde8693ab55aef279d19f5bf0a146c414bac45b";
-      sha256 = "sha256-Jb0x0cLEA6c0hfq9M2EeE25jE55m0rvqjNLMfedQdI4=";
+      rev = "c3d01c40bd3d0201add312fad1bab21494df8a7d";
+      sha256 = "sha256-dDEk0Eh8nOO5IgolTarRKWWLwK1ns0Ns0VJztAl0uos=";
     };
 
     ".tmux/plugins/tpm".source = config.lib.file.mkOutOfStoreSymlink ( pkgs.fetchFromGitHub {
