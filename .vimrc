@@ -260,3 +260,6 @@ endif
 :vnoremap < <gv
 :vnoremap > >gv
 
+" Go specific Macros
+let @j = '0wyiwA`json:"pb~A"`' "json struct tag
+
