@@ -9,13 +9,13 @@ let
   dotFilesDir = "${homeDir}/simontheleg/dotfiles";
 
   # pin stable and unstable channels to specific commits
-  nixstablecommit = "3c5ae9be1f18c790ea890ef8decbd0946c0b4c04";
+  nixstablecommit = "9370544d849be8a07193e7611d02e6f6f1b10768";
   nixunstablecommit = "934e076a441e318897aa17540f6cf7caadc69028";
 
   pkgs = import (builtins.fetchGit {
     name = "nixpkgs-stable";
     url = "https://github.com/nixos/nixpkgs.git";
-    ref = "refs/heads/nixos-21.11";
+    ref = "refs/heads/nixpkgs-22.05-darwin";
     rev = "${nixstablecommit}";
   }) { config = { allowUnfree = true; }; };
 
