@@ -29,24 +29,6 @@ let
     overlays = [
       (self: super: {
 
-        # Switch to yq version 3 for Kubermatic. Might make sense to extract this into a custom nix file for directoy nix-shell in the future
-        yq-go3 = let
-          version = "3.4.1";
-          src = pkgs.fetchFromGitHub {
-            owner = "mikefarah";
-            repo = "yq";
-            rev = version;
-            sha256 = "sha256-K3mWo5wFKWxSel8y/b6N02/BoB/KuTbHhVJrVYLCbCY=";
-          };
-        in (pkgs.yq-go.override rec {
-          buildGoModule = args:
-            pkgs.buildGoModule.override { } (args // {
-              inherit src version;
-              vendorSha256 =
-                "sha256-jT0/4wjpj5kBULXIC+bupHOnp0n9sk4WJAC7hu6Cq1A=";
-            });
-        });
-
       })
     ];
   };
@@ -139,7 +121,7 @@ in {
     kustomize
     asciinema
     vault
-    yq-go3
+    yq-go
     prometheus
     kubebuilder
     htop
