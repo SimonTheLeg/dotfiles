@@ -29,10 +29,6 @@ let
     overlays = [
       (self: super: {
 
-        # currently needed as buildGo18Module is not yet supported in Darwin (https://github.com/NixOS/nixpkgs/issues/168984)
-        golangci-lint =
-          super.golangci-lint.override { buildGoModule = super.buildGoModule; };
-
         # Switch to yq version 3 for Kubermatic. Might make sense to extract this into a custom nix file for directoy nix-shell in the future
         yq-go3 = let
           version = "3.4.1";
