@@ -23,6 +23,7 @@ alias ga='git add'
 alias gb='git branch'
 alias gd='git diff'
 alias gp='git push'
+alias gpf='git push -f'
 alias gl="git lg"
 alias gc='git commit'
 alias gcm='git commit --amend'
