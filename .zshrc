@@ -31,7 +31,8 @@ alias gcmn='git commit --amend --no-edit'
 alias gdc='git diff --cached'
 alias gap='git add -p'
 alias gpl='git pull'
-alias gcb='git checkout -b'
+alias gsb='git switch -c'
+alias grs='git restore'
 alias grb='git rebase'
 alias grbi='git rebase -i'
 alias cdg='cd $(git rev-parse --show-cdup)'
@@ -123,10 +124,10 @@ function vim () {
 add-zsh-hook -Uz precmd vim
 
 # Custom fzf parsing
-gco() {
+gsw() {
   local tags branches target
   if (( $# > 0 )); then
-	  git checkout $@
+	  git switch $@
 	  return
   fi
   branches=$(
@@ -139,7 +140,7 @@ gco() {
     (echo "$branches"; echo "$tags") |
     fzf --no-hscroll --no-multi -n 2 \
         --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
-  git checkout $(awk '{print $2}' <<<"$target" )
+  git switch $(awk '{print $2}' <<<"$target" )
 }
 
 # kubectl autocomplete
