@@ -50,6 +50,11 @@ gpr() {
   fi
 }
 
+ghc() {
+  GH_PATH="~/github"
+  gh repo clone $1 $GH_PATH/$1
+}
+
 # Kubernetes Aliases
 alias kc='kubectl'
 alias kcd='kubectl describe'
