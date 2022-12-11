@@ -59,6 +59,16 @@ ghc() {
   LOCAL_PATH="${ORG_LOWERCASE}/${REPO}"
   gh repo clone $1 "${GH_PATH}/${LOCAL_PATH}"
 }
+
+tempgo() {
+  DATE=$(date +"%d-%m_%H-%M-%S")
+  DIR="${HOME}/go-experiments/${DATE}" # unfortunately this cannot be in /tmp, because dlv cannot use breakpoints in symbolic links
+  mkdir ${DIR}
+  cd ${DIR}
+  git init
+  go mod init github.com/SimonTheLeg/go-tests
+  echo "package main" > main.go
+  code . main.go
 }
 
 # Kubernetes Aliases
