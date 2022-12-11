@@ -269,3 +269,6 @@ let @l = '`<i[`>ea]()h'
 
 " Disable hlsearch on double escape tap in normal mode
 nnoremap <silent> <Esc><Esc> :noh<CR>
+
+" Do not automatically wrap lines by default
+:set nowrap
