@@ -245,11 +245,11 @@ if exists('g:vscode')
   nnoremap <leader>lt <Cmd>call VSCodeCall('testing.runAtCursor')<CR>
   nnoremap <leader>lT <Cmd>call VSCodeCall('testing.runCurrentFile')<CR>
   nnoremap <leader>lb <Cmd>call VSCodeCall('editor.debug.action.toggleBreakpoint')<CR>
-  nnoremap <leader>lgc <Cmd>call VSCodeCall('gitlens.copyRemoteFileUrlToClipboard')<CR>
-  nnoremap <leader>lgC <Cmd>call VSCodeCall('gitlens.openCommitOnRemote')<CR>
-  nnoremap <leader>lgf <Cmd>call VSCodeCall('gitlens.openFileOnRemote')<CR>
+  nnoremap <leader>grc <Cmd>call VSCodeCall('gitlens.copyRemoteFileUrlToClipboard')<CR>
+  nnoremap <leader>grC <Cmd>call VSCodeCall('gitlens.openCommitOnRemote')<CR>
+  nnoremap <leader>grf <Cmd>call VSCodeCall('gitlens.openFileOnRemote')<CR>
   nnoremap <leader>lfi <Cmd>call VSCodeCall('references-view.findImplementations')<CR>
-  nnoremap <leader>lw <Cmd>call VSCodeCall('rewrap.rewrapComment')<CR>
+  nnoremap <leader>wl <Cmd>call VSCodeCall('rewrap.rewrapComment')<CR>
   nnoremap <leader>lot <Cmd>call VSCodeCall('go.toggle.test.file')<CR>
   nnoremap <leader>lr <Cmd>call VSCodeCall('editor.action.rename')<CR>
   nnoremap <leader>lP <Cmd>call VSCodeCall('editor.action.marker.prev')<CR>
