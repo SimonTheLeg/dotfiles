@@ -51,8 +51,14 @@ gpr() {
 }
 
 ghc() {
-  GH_PATH="~/github"
-  gh repo clone $1 $GH_PATH/$1
+  GH_PATH="${HOME}/github"
+
+  ORG=${1%%/*}
+  REPO=${1##*/}
+  ORG_LOWERCASE=${ORG:l} # since org is case insensitive in GH, lowercase it so we don't have two folders for the same org by accident
+  LOCAL_PATH="${ORG_LOWERCASE}/${REPO}"
+  gh repo clone $1 "${GH_PATH}/${LOCAL_PATH}"
+}
 }
 
 # Kubernetes Aliases
