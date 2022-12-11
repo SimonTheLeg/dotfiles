@@ -55,6 +55,7 @@ Plug 'nvim-lua/popup.nvim', Cond(!exists('g:vscode'))
 Plug 'nvim-lua/plenary.nvim', Cond(!exists('g:vscode'))
 Plug 'nvim-telescope/telescope.nvim', Cond(!exists('g:vscode'))
 Plug 'chrisbra/NrrwRgn', Cond(!exists('g:vscode'))
+Plug 'christoomey/vim-tmux-navigator', Cond(!exists('g:vscode'))
 
 " Plugins to use inside VSCode nvim
 "
