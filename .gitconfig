@@ -28,3 +28,5 @@
 	required = true
 [commit]
 	gpgsign = true # it should be fine to set this on global level, as I am mainly working on OpenSource Software for now. In case of private repos which are not OpenSource, this could be overwritten per Repo
+[checkout]
+	defaultRemote = origin
