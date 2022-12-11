@@ -272,3 +272,7 @@ nnoremap <silent> <Esc><Esc> :noh<CR>
 
 " Do not automatically wrap lines by default
 :set nowrap
+
+" Switch gm and gM
+nnoremap gm gM
+nnoremap gM gm
