@@ -264,5 +264,8 @@ endif
 " Go specific Macros
 let @j = '0wyiwA`json:"pb~A"`' "json struct tag
 
+" Markdown specific Macros
+let @l = '`<i[`>ea]()h'
+
 " Disable hlsearch on double escape tap in normal mode
 nnoremap <silent> <Esc><Esc> :noh<CR>
