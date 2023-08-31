@@ -145,6 +145,7 @@ in {
     goreleaser
     minio-client
     rakkess
+    k9s
   ];
   # for future Simon: if I ever need more than one channel as source, here's how to do it https://discourse.nixos.org/t/nix-env-i-runs-out-of-memory-with-unstable-overlay/1517/3
 
@@ -172,6 +173,11 @@ in {
         rev = "v3.0.0";
         sha256 = "sha256-qYBMDLIEkgiTFxjlF8AHn31HZ4nt/ZoeerzX70SSBaM=";
       });
+
+    "Library/Application Support/k9s/skin.yml".source = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/derailed/k9s/v0.27.4/skins/one_dark.yml";
+        sha256 = "sha256-527BS3aU+2MmbnHXNzCYQ1b47cDistd5+2xuIXUQmpU=";
+      };
 
     ".local/share/nvim/site/autoload/plug.vim".source = pkgs.fetchurl {
       url =

@@ -78,6 +78,7 @@ alias kcl='kubectl logs'
 alias kcg='kubectl get'
 alias wkc='watch kubectl'
 alias kcwn='kc get pods --all-namespaces -o custom-columns=NAMESPACE:.metadata.namespace,NAME:.metadata.name,NODE:.spec.nodeName'
+alias k9s='k9s --logoless'
 
 # Change `kubectl edit` editor to vim
 export KUBE_EDITOR='nvim'
