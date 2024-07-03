@@ -65,13 +65,39 @@ gpr() {
 
 ghc() {
   GH_PATH="${HOME}/github"
-
   ORG=${1%%/*}
   REPO=${1##*/}
   ORG_LOWERCASE=${ORG:l} # since org is case insensitive in GH, lowercase it so we don't have two folders for the same org by accident
   LOCAL_PATH="${ORG_LOWERCASE}/${REPO}"
+  # use its own shell here so we can stop execution on error
+  (
+  set -e
   gh repo clone $1 "${GH_PATH}/${LOCAL_PATH}"
+  cd "${GH_PATH}/${LOCAL_PATH}"
+  # if we are on a fork, initialize the repo with upstream
+  if git remote -v | grep upstream &> /dev/null; then
+    upstream_url=$(git remote get-url --push upstream)
+    gh repo set-default ${upstream_url}
+  fi
+  )
+  # after successful cloning, change the current shell into the new directory
+  cd "${GH_PATH}/${LOCAL_PATH}"
 }
+
+ghf() {(
+  REPO=${1##*/}
+  set -e
+  if [ -z "$2" ]
+    then
+      gh repo fork --clone=false ${1}
+      FORKNAME="${GH_USERNAME}/${REPO}"
+    else
+      # if a custom name is provided, supply it to the fork
+      gh repo fork --clone=false ${1} --fork-name ${2}
+      FORKNAME="${GH_USERNAME}/${2}"
+  fi
+  ghc $FORKNAME
+)}
 
 tempgo() {
   DATE=$(date +"%d-%m_%H-%M-%S")
