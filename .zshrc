@@ -1,6 +1,9 @@
 # Load also bash completion funcs (zsh completion funcs will automatically be loaded by home-manager)
 autoload -U bashcompinit && bashcompinit
 
+# Set language to English for tools like git
+export LC_ALL=en_US.UTF-8
+
 # Source home-manager
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 
