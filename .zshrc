@@ -42,9 +42,19 @@ alias cdg='cd $(git rev-parse --show-cdup)'
 alias gsf='git diff-tree --no-commit-id --name-only -r'
 alias gf='git fetch'
 alias gfa='git fetch --all'
+alias gio='git-open'
+
+GH_USERNAME="SimonTheLeg"
+
+gbackup() {
+  CUR_BRANCH=$(git branch --show-current)
+  BACKUP_BRANCH="${CUR_BRANCH}_backup"
+  echo "Creating Backup Branch ${BACKUP_BRANCH}"
+  git switch -c $BACKUP_BRANCH
+  git switch $CUR_BRANCH
+}
 
 gpr() {
-  GH_USERNAME="SimonTheLeg"
   # check if we are on a fork
   if git remote -v | grep upstream &> /dev/null; then
     gh pr view ${GH_USERNAME}:$(git branch --show-current) --web || gh pr create --web --head ${GH_USERNAME}:$(git branch --show-current)
