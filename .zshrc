@@ -144,7 +144,25 @@ tempgo() {
   cd ${DIR}
   git init
   go mod init github.com/SimonTheLeg/go-tests
-  echo "package main" > main.go
+  cat << EOF > main.go
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	if err := execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+}
+
+func execute() error {
+	return nil
+}
+EOF
   code . main.go
 }
 
