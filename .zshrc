@@ -46,7 +46,39 @@ alias gio='git-open'
 alias gst='git stash --all'
 alias gstp='git stash --pop'
 
-GH_USERNAME="SimonTheLeg"
+GH_COM_USERNAME="SimonTheLeg"
+GH_SAP_USERNAME="C5385163"
+
+gh_username_from_local_clone() {
+  if git remote -v | grep github.com &> /dev/null; then GH_USERNAME=$GH_COM_USERNAME; fi
+  if git remote -v | grep github.tools.sap &> /dev/null; then GH_USERNAME=$GH_SAP_USERNAME; fi
+}
+
+determine_repo_vars() {
+  LOCAL_PREFIX="${HOME}/github"
+  GH_USERNAME=$GH_COM_USERNAME
+  CLONE_PATH_PREFIX="" # for github.com, no prefix is required
+  SERVER_PREFIX="" # for github.com, no prefix is required
+
+  export ORG REPO BUFFER
+  IFS=/ read -r ORG REPO BUFFER <<< $1
+  ORG=${ORG:l} # since org is case insensitive in GH, lowercase it so we don't have two folders for the same org by accident
+
+  REPO_ID="${ORG}/${REPO}"
+  
+  if [ "$ORG" = "sap" ] ; then 
+    LOCAL_PREFIX="${HOME}/sap"
+    # shift all the arguments one over
+    ORG=$REPO
+    REPO=$BUFFER
+    GH_USERNAME=$GH_SAP_USERNAME
+    CLONE_PATH_PREFIX="https://github.tools.sap/"
+    SERVER_PREFIX="sap/"
+  fi
+
+  LOCAL_FOLDER="${LOCAL_PREFIX}/${ORG}/${REPO}"
+  CLONE_STRING="${CLONE_PATH_PREFIX}${ORG}/${REPO}"
+}
 
 gbackup() {
   CUR_BRANCH=$(git branch --show-current)
@@ -57,6 +89,7 @@ gbackup() {
 }
 
 gpr() {
+  gh_username_from_local_clone
   # check if we are on a fork
   if git remote -v | grep upstream &> /dev/null; then
     gh pr view ${GH_USERNAME}:$(git branch --show-current) --web || gh pr create --web --head ${GH_USERNAME}:$(git branch --show-current)
@@ -66,16 +99,13 @@ gpr() {
 }
 
 ghc() {
-  GH_PATH="${HOME}/github"
-  ORG=${1%%/*}
-  REPO=${1##*/}
-  ORG_LOWERCASE=${ORG:l} # since org is case insensitive in GH, lowercase it so we don't have two folders for the same org by accident
-  LOCAL_PATH="${ORG_LOWERCASE}/${REPO}"
+  determine_repo_vars $1
+ 
   # use its own shell here so we can stop execution on error
   (
   set -e
-  gh repo clone $1 "${GH_PATH}/${LOCAL_PATH}"
-  cd "${GH_PATH}/${LOCAL_PATH}"
+  gh repo clone "${CLONE_STRING}" "${LOCAL_FOLDER}"
+  cd "${LOCAL_FOLDER}"
   # if we are on a fork, initialize the repo with upstream
   if git remote -v | grep upstream &> /dev/null; then
     upstream_url=$(git remote get-url --push upstream)
@@ -83,23 +113,29 @@ ghc() {
   fi
   )
   # after successful cloning, change the current shell into the new directory
-  cd "${GH_PATH}/${LOCAL_PATH}"
+  cd "${LOCAL_FOLDER}"
 }
 
-ghf() {(
-  REPO=${1##*/}
+ghf() {
+  (
+  determine_repo_vars $1
+
   set -e
   if [ -z "$2" ]
     then
-      gh repo fork --clone=false ${1}
-      FORKNAME="${GH_USERNAME}/${REPO}"
+      gh repo fork --clone=false "${CLONE_STRING}"
+      FORKNAME="${SERVER_PREFIX}${GH_USERNAME}/${REPO}"
     else
       # if a custom name is provided, supply it to the fork
-      gh repo fork --clone=false ${1} --fork-name ${2}
-      FORKNAME="${GH_USERNAME}/${2}"
+      gh repo fork --clone=false "${CLONE_STRING}" --fork-name "${2}"
+      FORKNAME="${SERVER_PREFIX}${GH_USERNAME}/${2}"
   fi
-  ghc $FORKNAME
-)}
+  sleep 3s # sometimes the fork is already created, but not ready for cloning yet, but gh cli will finish early (only really happens on private servers)
+  ghc "${FORKNAME}"
+)
+
+  cd "${LOCAL_FOLDER}"
+}
 
 tempgo() {
   DATE=$(date +"%d-%m_%H-%M-%S")
