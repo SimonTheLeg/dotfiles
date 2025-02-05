@@ -4,6 +4,7 @@ command_timeout = 3000
 [kubernetes]
 disabled = false
 style = 'blue'
+format = '[$symbol$context@$cluster( \($namespace\))]($style) in '
 
 [directory]
 style = 'green'
