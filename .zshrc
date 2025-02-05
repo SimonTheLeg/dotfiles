@@ -168,6 +168,7 @@ EOF
 
 # Kubernetes Aliases
 alias kc='kubectl'
+alias k='kubectl'
 alias kcd='kubectl describe'
 alias kcl='kubectl logs'
 alias kcg='kubectl get'
