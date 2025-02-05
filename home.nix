@@ -179,13 +179,6 @@ in {
     ".config/nvim/init.vim".source = "${dotFilesDir}/init.vim";
     ".kube/kubie.yaml".source = "${dotFilesDir}/kubie.yaml";
 
-    ".goenv/".source = pkgs.fetchFromGitHub {
-      owner = "syndbg";
-      repo = "goenv";
-      rev = "4beb4808bf597c935264a45787fb29b1ce967bbb";
-      sha256 = "sha256-Pm+eef5RlRkmi2C3jBd0AHelgbmNdOpO3E61K4h6vhk=";
-    };
-
     ".tmux/plugins/tpm".source = config.lib.file.mkOutOfStoreSymlink
       (pkgs.fetchFromGitHub {
         owner = "tmux-plugins";
