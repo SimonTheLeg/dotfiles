@@ -113,7 +113,7 @@ in {
     stack
     starship
     stern
-    terraform
+    terraform # still need it for formatter
     terraform-docs
     terraform-ls
     tmux
