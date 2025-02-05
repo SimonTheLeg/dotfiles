@@ -30,8 +30,22 @@ let
     config = { allowUnfree = true; };
     overlays = [ ];
 
-      })
-    ];
+    # TODO figure out go overrides
+    # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/go.section.md
+    # overlays = [
+    #   (self: super: {
+    #     kubebuilder = super.kubebuilder.overrideAttrs
+    #       (finalAttrs: previousAttrs: {
+    #         version = "4.2.0";
+    #         src = pkgs.fetchFromGitHub {
+    #           inherit (previousAttrs.src) owner repo;
+    #           rev = "v${finalAttrs.version}";
+    #           hash = "sha256-iWu3HnfjT9hiDyl9Ni0xJa/e+E9fbh3bnfrdE1ChaWc=";
+    #         };
+    #         vendorHash = "sha256-dMzDKYjPBAiNFwzaBML76tMylHtBs9Tb2Ulj/WovVJ4=";
+    #       });
+    #   })
+    # ];
   };
 
 in {
