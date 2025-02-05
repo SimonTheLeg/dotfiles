@@ -12,3 +12,12 @@ truncate_to_repo = false
 
 [jobs]
 threshold = 2
+
+[gcloud]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[aws]
+disabled = true
