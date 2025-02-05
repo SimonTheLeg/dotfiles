@@ -40,3 +40,13 @@ Aftewards reboot the Mac and then it should be available under the standard inpu
   ```sh
   home-manager switch
   ```
+
+### iTerm Setup
+
+1. Install NerdFont
+
+```sh
+open iTerm/Meslo\ LG\ L\ DZ\ Regular\ Nerd\ Font\ Complete.ttf
+```
+
+2. In iTerm settings point the settings folder to the dotfiles/iTerm folder
