@@ -9,25 +9,26 @@ let
   dotFilesDir = "${homeDir}/simontheleg/dotfiles";
 
   # pin stable and unstable channels to specific commits
-  nixstablecommit = "9370544d849be8a07193e7611d02e6f6f1b10768";
-  nixunstablecommit = "ced197be72099edcfa68ebed8b87af7b04851f45"; # 01.11.2022
+  nixstablecommit = "b7589ceaeea275918c209db1c9a2c51e327af1ee";
+  nixunstablecommit =
+    "6c4e0724e0a785a20679b1bca3a46bfce60f05b6"; # nixpkgs-unstable 02.02.2025
 
   pkgs = import (builtins.fetchGit {
     name = "nixpkgs-stable";
     url = "https://github.com/nixos/nixpkgs.git";
-    ref = "refs/heads/nixpkgs-22.05-darwin";
+    ref = "refs/heads/nixpkgs-23.05-darwin";
     rev = "${nixstablecommit}";
   }) { config = { allowUnfree = true; }; };
 
   pkgs_unstable = import (builtins.fetchGit {
     name = "nixpkgs-unstable";
     url = "https://github.com/nixos/nixpkgs.git";
-    ref = "refs/heads/nixpkgs-unstable";
+    # ref = "refs/heads/nixpkgs-unstable";
+    ref = "refs/heads/master";
     rev = "${nixunstablecommit}";
   }) {
     config = { allowUnfree = true; };
-    overlays = [
-      (self: super: {
+    overlays = [ ];
 
       })
     ];
