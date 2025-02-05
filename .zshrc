@@ -175,6 +175,10 @@ alias kcg='kubectl get'
 alias wkc='watch kubectl'
 alias kcwn='kc get pods --all-namespaces -o custom-columns=NAMESPACE:.metadata.namespace,NAME:.metadata.name,NODE:.spec.nodeName'
 alias k9s='k9s --logoless'
+# done as a func instead of alias, so I don't have to deal with escaping all the quotes
+knd() {
+  kubectl create deploy debug-pod --image=simontheleg/debug-pod:latest && kubectl wait --for=condition=ready pod -l app=debug-pod && kubectl exec -it $(kubectl get pods -o jsonpath="{.items[?(@.metadata.labels.app=='debug-pod')].metadata.name}") -- /bin/bash
+}
 
 # Change `kubectl edit` editor to vim
 export KUBE_EDITOR='nvim'
