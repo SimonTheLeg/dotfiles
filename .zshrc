@@ -55,7 +55,7 @@ gh_username_from_local_clone() {
 }
 
 determine_repo_vars() {
-  LOCAL_PREFIX="${HOME}/github"
+  LOCAL_PREFIX="${HOME}/code/github"
   GH_USERNAME=$GH_COM_USERNAME
   CLONE_PATH_PREFIX="" # for github.com, no prefix is required
   SERVER_PREFIX="" # for github.com, no prefix is required
@@ -67,7 +67,7 @@ determine_repo_vars() {
   REPO_ID="${ORG}/${REPO}"
   
   if [ "$ORG" = "sap" ] ; then 
-    LOCAL_PREFIX="${HOME}/sap"
+    LOCAL_PREFIX="${HOME}/code/sap"
     # shift all the arguments one over
     ORG=$REPO
     REPO=$BUFFER

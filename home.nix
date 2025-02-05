@@ -3,10 +3,10 @@
 let
   username = builtins.getEnv "USER";
   homeDir = builtins.getEnv "HOME";
-  # Currently I have fixated this to $HOME/simontheleg/dotfiles to sync it across multiple machines and/or
+  # Currently I have fixated this to $HOME/code/github/simontheleg/dotfiles to sync it across multiple machines and/or
   # multiple users per machine, as it only comes with the limitation to always clone the repository into
   # that directory
-  dotFilesDir = "${homeDir}/simontheleg/dotfiles";
+  dotFilesDir = "${homeDir}/code/github/simontheleg/dotfiles";
 
   # pin stable and unstable channels to specific commits
   nixstablecommit = "b7589ceaeea275918c209db1c9a2c51e327af1ee";
@@ -203,7 +203,6 @@ in {
     ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink
       "${dotFilesDir}/starship.toml"; # mkOutOfStoreSymlink is needed so starship can write into the file
     # since I am playing around with nvim the whole day, keep this as a symlink for now
-    ".config/nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/nvim/init.lua";
     ".config/nvim/".source =
       config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/nvim/";
     ".kube/kubie.yaml".source = "${dotFilesDir}/kubie.yaml";
