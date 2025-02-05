@@ -215,6 +215,7 @@ in {
   programs.zsh = {
     enable = true;
 
+    enableAutosuggestions = true;
     localVariables = {
       # disable escape when pasting urls. See https://stackoverflow.com/questions/25614613/how-to-disable-zsh-substitution-autocomplete-with-url-and-backslashes
       DISABLE_MAGIC_FUNCTIONS = ["true"];
