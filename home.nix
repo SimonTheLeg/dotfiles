@@ -176,7 +176,10 @@ in {
     ".gitconfig".source = "${dotFilesDir}/.gitconfig";
     ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink
       "${dotFilesDir}/starship.toml"; # mkOutOfStoreSymlink is needed so starship can write into the file
-    ".config/nvim/init.vim".source = "${dotFilesDir}/init.vim";
+    # since I am playing around with nvim the whole day, keep this as a symlink for now
+    ".config/nvim/init.lua".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/nvim/init.lua";
+    ".config/nvim/".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/nvim/";
     ".kube/kubie.yaml".source = "${dotFilesDir}/kubie.yaml";
 
     ".tmux/plugins/tpm".source = config.lib.file.mkOutOfStoreSymlink
