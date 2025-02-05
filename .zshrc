@@ -290,10 +290,16 @@ source <(gopass completion bash)
 # custom path aliasing for pip installed packages
 PATH="${HOME}/.local/bin:$PATH"
 
-# source goenv
-export GOENV_ROOT="$HOME/.goversions"
-PATH="$HOME/.goenv/bin:$PATH"
-goenv init - | source /dev/stdin
+# additional versions can be installed via go install golang.org/dl/go<VERSION>@latest
+# add the location where all go versions are to path
+export PATH=${HOME}/go/bin:${PATH}
+# set the default go version to use with plain "go" commands
+alias gohelper=go1.23.3
+export PATH=$(gohelper env GOROOT)/bin:${PATH} # simple alias go=go1.22.6 is not enough as some tools explicitedly search for the go binary inside $PATH
+export GOROOT=$(gohelper env GOROOT)
+export PATH=$(gohelper env GOPATH)/bin:${PATH}
+
+# source plugins installed by krew
 export PATH="${PATH}:${HOME}/.krew/bin"
 
 # Source scmpuff
