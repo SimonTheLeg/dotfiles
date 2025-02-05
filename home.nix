@@ -170,6 +170,7 @@ in {
     kubernetes-controller-tools
     pstree
     yarn
+    cmake
   ];
   # for future Simon: if I ever need more than one channel as source, here's how to do it https://discourse.nixos.org/t/nix-env-i-runs-out-of-memory-with-unstable-overlay/1517/3
 
