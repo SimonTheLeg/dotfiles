@@ -199,11 +199,6 @@ in {
         sha256 = "sha256-527BS3aU+2MmbnHXNzCYQ1b47cDistd5+2xuIXUQmpU=";
       };
 
-    ".local/share/nvim/site/autoload/plug.vim".source = pkgs.fetchurl {
-      url =
-        "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim";
-      sha256 = "sha256-VgaLrLphI8TsVB85iJM/3cf5wee0+bCmfzrZPf1t9L4=";
-    };
 
     ".iterm2_shell_integration.zsh".source = pkgs.fetchurl {
       url = "https://iterm2.com/shell_integration/zsh";
