@@ -353,5 +353,26 @@ source <(konf completion zsh)
 # terraform auto-completion
 complete -o nospace -C /Users/simonbein/.nix-profile/bin/terraform terraform
 
+
+# dj prow setup
+source <(dj completion zsh)
+
+prowlogs() {
+  konf set k8c-dev-ci_k8c-dev-ci &&
+  dj logs $1
+}
+
+prowproxy() {
+  konf set k8c-dev-ci_k8c-dev-ci &&
+  dj kind-proxy $1
+}
+
+prowusercluster() {
+  konf set k8c-dev-ci_k8c-dev-ci
+  tempfile=$(mktemp)
+  echo $tempfile
+  dj kkp-usercluster $1 > $tempfile
+}
+
 # rupa/z
 source $HOME/.rupaz/z.sh
