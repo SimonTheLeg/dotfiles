@@ -77,7 +77,7 @@ in {
     diff-so-fancy
     direnv
     dive
-    exa
+    eza
     fzf
     gettext
     gh
