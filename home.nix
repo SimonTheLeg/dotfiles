@@ -138,7 +138,6 @@ in {
     vault
     yq-go
     prometheus
-    kubebuilder
     htop
     sops
     krew
