@@ -175,6 +175,7 @@ in {
     cfssl
     darwin.iproute2mac
     dos2unix # line ending converter
+    chart-testing # helm chart testing
   ];
   # for future Simon: if I ever need more than one channel as source, here's how to do it https://discourse.nixos.org/t/nix-env-i-runs-out-of-memory-with-unstable-overlay/1517/3
 
