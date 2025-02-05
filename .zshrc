@@ -26,7 +26,7 @@ alias ga='git add'
 alias gb='git branch'
 alias gd='git diff'
 alias gp='git push'
-alias gpf='git push -f'
+alias gpf='git push --force-with-lease'
 alias gl="git lg"
 alias gc='git commit'
 alias gcm='git commit --amend'
@@ -43,6 +43,8 @@ alias gsf='git diff-tree --no-commit-id --name-only -r'
 alias gf='git fetch'
 alias gfa='git fetch --all'
 alias gio='git-open'
+alias gst='git stash --all'
+alias gstp='git stash --pop'
 
 GH_USERNAME="SimonTheLeg"
 
