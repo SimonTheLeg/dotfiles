@@ -151,7 +151,7 @@ in {
     coreutils
     grpcurl
     git-filter-repo
-    nixfmt
+    nixfmt-classic
     python310
     k9s
     highlight
@@ -173,7 +173,7 @@ in {
     cmake
     openssl
     cfssl
-    darwin.iproute2mac
+    iproute2mac
     dos2unix # line ending converter
     chart-testing # helm chart testing
     opentofu
@@ -236,7 +236,10 @@ in {
   programs.zsh = {
     enable = true;
 
-    enableAutosuggestions = true;
+    autosuggestion = {
+      enable = true;
+    };
+
     localVariables = {
       # disable escape when pasting urls. See https://stackoverflow.com/questions/25614613/how-to-disable-zsh-substitution-autocomplete-with-url-and-backslashes
       DISABLE_MAGIC_FUNCTIONS = [ "true" ];
