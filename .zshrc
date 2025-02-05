@@ -180,6 +180,67 @@ knd() {
   kubectl create deploy debug-pod --image=simontheleg/debug-pod:latest && kubectl wait --for=condition=ready pod -l app=debug-pod && kubectl exec -it $(kubectl get pods -o jsonpath="{.items[?(@.metadata.labels.app=='debug-pod')].metadata.name}") -- /bin/bash
 }
 
+kecho() {
+  namespace=$(kubectl config view --minify -o jsonpath='{..namespace}')
+  kubectl create deploy debug-echo-server --image=ealen/echo-server
+  kubectl expose deployment debug-echo-server --port 80
+  echo "server available via:"
+  echo "debug-echo-server.${namespace}"
+  echo "debug-echo-server.${namespace}.svc.cluster.local"
+}
+#
+# [konsole] create root shell on a node
+function konsole() {
+    alias _inline_fzf="fzf --multi --ansi -i -1 --height=50% --reverse -0 --header-lines=1 --inline-info --border"
+    local node_hostname="$(kubectl get node --label-columns=kubernetes.io/hostname | _inline_fzf | awk '{print $6}')"
+    local ns="$(kubectl get ns | _inline_fzf | awk '{print $1}')"
+    local name=shell-$RANDOM
+    local overrides='
+{
+    "spec": {
+        "hostPID": true,
+        "hostNetwork": true,
+        "tolerations": [
+            {
+                "operator": "Exists",
+                "effect": "NoSchedule"
+            },
+            {
+                "operator": "Exists",
+                "effect": "NoExecute"
+            }
+        ],
+        "containers": [
+            {
+                "name": "'$name'",
+                "image": "alpine",
+                "command": [
+                    "/bin/sh"
+                ],
+                "args": [
+                    "-c",
+                    "nsenter -t 1 -m -u -i -n -p -- bash"
+                ],
+                "resources": null,
+                "stdin": true,
+                "stdinOnce": true,
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "tty": true,
+                "securityContext": {
+                    "privileged": true
+                }
+            }
+        ],
+        "nodeSelector": {
+            "kubernetes.io/hostname": "'$node_hostname'"
+        }
+    }
+}
+'
+    kubectl run $name --namespace "$ns" --rm -it --image alpine --overrides="${overrides}"
+}
+
 # Change `kubectl edit` editor to vim
 export KUBE_EDITOR='nvim'
 
