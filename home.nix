@@ -223,7 +223,7 @@ in {
 
     ".iterm2_shell_integration.zsh".source = pkgs.fetchurl {
       url = "https://iterm2.com/shell_integration/zsh";
-      sha256 = "sha256-pNn1unJyAU8QihQoHV7aIZA1s2iyloAG9hdV19/zaMA=";
+      sha256 = "sha256-kQJ8bVIh7nEjYJ6OWqiEDqIY+YWD5RbD1CXV+KKyDno";
     };
 
     ".rupaz/z.sh".source = pkgs.fetchurl {
