@@ -261,6 +261,7 @@ alias cat='bat --theme "TwoDark"'
 # Other Alias
 alias cl='clear'
 alias tf='terraform'
+alias docker='podman'
 alias dc='docker-compose'
 alias sp='spotify'
 alias fk='fly -t k'
