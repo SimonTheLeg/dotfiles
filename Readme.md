@@ -43,10 +43,10 @@ Aftewards reboot the Mac and then it should be available under the standard inpu
 
 ### iTerm Setup
 
-1. Install NerdFont
+1. Install Powerline Font
 
 ```sh
-open iTerm/Meslo\ LG\ L\ DZ\ Regular\ Nerd\ Font\ Complete.ttf
+open iTerm/Meslo\ LG\ L\ DZ\ Regular\ for\ Powerline.ttf 
 ```
 
 2. In iTerm settings point the settings folder to the dotfiles/iTerm folder
