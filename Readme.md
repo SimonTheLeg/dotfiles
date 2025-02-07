@@ -27,7 +27,7 @@ Aftewards reboot the Mac and then it should be available under the standard inpu
 2. Symlink home manager config and [Install Home Manager](https://github.com/nix-community/home-manager#installation)
 
   ```sh
-  mkdir -p ${HOME}/.config/nixpkgs/
+  mkdir -p ${HOME}/.config/home-manager/
   ln -s -f ~/code/github/simontheleg/dotfiles/home.nix ${HOME}/.config/home-manager/home.nix
   nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
   nix-channel --update
