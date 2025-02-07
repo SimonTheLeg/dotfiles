@@ -14,7 +14,7 @@ Clone the repository into `~/code/github/simontheleg/dotfiles`
 sudo cp -r SimonsCustomKeyboardLayout.bundle /Library/Keyboard\ Layouts
 ```
 
-Aftewards reboot the Mac and then it should be available under the standard input sources
+Afterwards reboot the Mac and then it should be available under the standard input sources
 
 ### Nix Setup
 
