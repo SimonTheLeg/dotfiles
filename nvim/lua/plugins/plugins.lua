@@ -48,7 +48,12 @@ if vim.g.vscode == nil then
       },
     },
     { 'jlanzarotta/bufexplorer' },
-    { 'pbogut/fzf-mru.vim' },
+    {
+      'pbogut/fzf-mru.vim',
+      dependencies = {
+        'junegunn/fzf'
+      }
+    },
     { 'christoomey/vim-tmux-navigator' },
     { 'nvim-lua/popup.nvim' },
     {

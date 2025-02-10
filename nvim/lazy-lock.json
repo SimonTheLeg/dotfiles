@@ -4,6 +4,7 @@
   "auto-save.nvim": { "branch": "main", "commit": "5fbcaac0a2698c87a9a1bd2083cb6949505cca12" },
   "bufexplorer": { "branch": "master", "commit": "d9905ad260b8abce5b3cd1df465aba9cbca05943" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
+  "fzf": { "branch": "master", "commit": "7877ac42f034bc6ef1ad7fa2cfeae367aa0762fb" },
   "fzf-mru.vim": { "branch": "master", "commit": "5b47c29e66d0546000b2988c4c9dca53f3134f35" },
   "fzf.vim": { "branch": "master", "commit": "6cda389bdea953c9c66a3cfe57e40463ffd61ae9" },
   "gitsigns.nvim": { "branch": "main", "commit": "4baa13519c2168cc9a7890a3580c50226ed018fb" },
