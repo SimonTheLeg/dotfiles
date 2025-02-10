@@ -40,7 +40,13 @@ if vim.g.vscode == nil then
     { 'christianrondeau/vim-base64' },
     { 'chuling/vim-equinusocio-material' },
     { 'PeterRincker/vim-searchlight' },
-    { '907th/vim-auto-save' },
+    {
+      'okuuva/auto-save.nvim',
+      opts = {
+        condition = require("plugins.auto-save").Save_condition,
+        debounce_delay = 200,
+      },
+    },
     { 'jlanzarotta/bufexplorer' },
     { 'pbogut/fzf-mru.vim' },
     { 'christoomey/vim-tmux-navigator' },
