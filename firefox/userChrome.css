@@ -1,0 +1,7 @@
+/* hides the native tabs */
+#TabsToolbar {
+    visibility: collapse;
+  }
+  
+/* hides the top bar that Firefox automatically generates for sidebar extensions */
+#sidebar-header{ display: none }
