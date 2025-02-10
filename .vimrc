@@ -1,13 +1,3 @@
-" make search case insensitive
-:set ignorecase
-
-" Remember more files
-let MRU_Max_Entries = 1000
-" map <C-m> :FZFMru <CR>
-
-" turn hybrid line numbers on
-:set number relativenumber
-
 " VSCode specific settings
 if exists('g:vscode')
   nnoremap <leader>grc <Cmd>call VSCodeCall('gitlens.copyRemoteFileUrlToClipboard')<CR>
@@ -31,22 +21,8 @@ if exists('g:vscode')
   nnoremap <C-w>z <Cmd>call VSCodeCall('workbench.action.minimizeOtherEditors')<CR>
 endif
 
-" Keep visual selection after indenting
-:vnoremap < <gv
-:vnoremap > >gv
-
 " Go specific Macros
 let @j = '0wyiwA`json:"pb~A,omitempty"`' "json struct tag
 
 " Markdown specific Macros
 let @l = '`<i[`>ea]()h'
-
-" Disable hlsearch on double escape tap in normal mode
-nnoremap <silent> <Esc><Esc> :noh<CR>
-
-" Do not automatically wrap lines by default
-:set nowrap
-
-" Switch gm and gM
-nnoremap gm gM
-nnoremap gM gm

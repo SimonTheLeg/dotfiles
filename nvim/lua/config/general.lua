@@ -1,12 +1,18 @@
 -- Settings in this file are always applied
 local opt = vim.opt
 local fn = vim.fn
+local km = vim.keymap
 
 vim.g.mapleader = " "
 
-opt.number = true    -- Show line numbers
-opt.hlsearch = true  -- Highlight search results
-opt.incsearch = true -- Go to search results immediately
+-- turn hybrid line numbers on
+opt.number = true
+opt.relativenumber = true
+
+opt.wrap = false      -- Do not automatically wrap lines
+opt.hlsearch = true   -- Highlight search results
+opt.incsearch = true  -- Go to search results immediately
+opt.ignorecase = true -- make search case insensitive
 
 -- Copy to/from system clipboard
 if fn.has("unnamedplus") == 1 then
@@ -29,3 +35,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+
+-- Keep visual selection after indenting
+km.set('v', '<', '<gv', { noremap = true })
+km.set('v', '>', '>gv', { noremap = true })
+
+-- Disable hlsearch on double excape tap in normal mode
+km.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true, noremap = true })
+
+-- Switch gm and gM
+km.set('n', 'gm', 'gM', { noremap = true })
+km.set('n', 'gM', 'gm', { noremap = true })
