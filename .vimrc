@@ -11,6 +11,7 @@ if exists('g:vscode')
   nnoremap <leader>lb <Cmd>call VSCodeCall('editor.debug.action.toggleBreakpoint')<CR>
   nnoremap <leader>lfi <Cmd>call VSCodeCall('references-view.findImplementations')<CR>
   nnoremap <leader>lot <Cmd>call VSCodeCall('go.toggle.test.file')<CR>
+  nnoremap <leader>lc <Cmd>call VSCodeCall('go.test.coverage')<CR>
   nnoremap <leader>lr <Cmd>call VSCodeCall('editor.action.rename')<CR>
   nnoremap <leader>lP <Cmd>call VSCodeCall('editor.action.marker.prev')<CR>
   nnoremap <leader>lp <Cmd>call VSCodeCall('editor.action.marker.next')<CR>
