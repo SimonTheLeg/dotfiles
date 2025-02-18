@@ -63,6 +63,7 @@ if vim.g.vscode == nil then
         'BurntSushi/ripgrep',
       }
     },
+    { 'nvim-tree/nvim-web-devicons' },
     { 'ekalinin/Dockerfile.vim', ft = "Dockerfile" },
     {
       'luukvbaal/statuscol.nvim',
