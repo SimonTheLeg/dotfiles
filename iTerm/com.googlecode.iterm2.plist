@@ -1583,7 +1583,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGLDZForPowerline-Regular 20</string>
+			<string>MesloLGLDZNF-Regular 20</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
