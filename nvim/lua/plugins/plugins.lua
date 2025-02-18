@@ -34,6 +34,11 @@ if vim.g.vscode == nil then
       },
       config = require("plugins.neogit").Setup
     },
+    {
+      "nvim-telescope/telescope-file-browser.nvim",
+      dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+      config = require("plugins.telescope-file-browser").Setup
+    },
     { 'iamcco/markdown-preview.nvim' },
     { 'Chiel92/vim-autoformat' },
     { 'itchyny/lightline.vim' },
@@ -61,7 +66,10 @@ if vim.g.vscode == nil then
       dependencies = {
         'nvim-lua/plenary.nvim',
         'BurntSushi/ripgrep',
-      }
+        'nvim-telescope/telescope-fzy-native.nvim',
+        'sharkdp/fd',
+      },
+      config = require("plugins.telescope").Setup
     },
     { 'nvim-tree/nvim-web-devicons' },
     { 'ekalinin/Dockerfile.vim', ft = "Dockerfile" },
