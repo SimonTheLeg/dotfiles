@@ -11,6 +11,9 @@ M.Setup = function()
       },
     },
   }
+
+  -- set keymap
+  vim.keymap.set("n", "<leader>G", vim.cmd.Neogit)
 end
 
 return M

@@ -23,6 +23,3 @@ end
 -- Legacy vimrc sourcing
 vim.cmd("source ~/.vimrc")
 
--- TODO for some reason this won't load if I put it inside neogit.lua, where it belongs
--- set keymap
-vim.keymap.set("n", "<leader>G", vim.cmd.Neogit)
