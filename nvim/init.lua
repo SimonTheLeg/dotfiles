@@ -2,6 +2,8 @@
 -- TODO delete this possibly
 -- local home = os.getenv("HOME")
 
+-- Settings to always use regardless of plain nvim or VSCode
+require("config.general")
 
 require 'plugins.plugins'
 require("lazy").setup(Plugins_to_install)
@@ -17,9 +19,6 @@ end
 -- if vim.g.vscode then
 --    require("config.vscode")
 -- end
-
--- Settings to always use regardless of plain nvim or VSCode
-require("config.general")
 
 -- Legacy vimrc sourcing
 vim.cmd("source ~/.vimrc")
