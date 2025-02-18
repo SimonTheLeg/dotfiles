@@ -1579,11 +1579,11 @@
 			<key>Name</key>
 			<string>Simon</string>
 			<key>Non Ascii Font</key>
-			<string>MesloLGLDZForPowerline-Regular 11</string>
+			<string>MesloLGLDZForPowerline-Regular 20</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGLDZForPowerline-Regular 11</string>
+			<string>MesloLGLDZForPowerline-Regular 20</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
