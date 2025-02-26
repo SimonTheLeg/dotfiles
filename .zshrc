@@ -261,11 +261,12 @@ alias cat='bat --theme "TwoDark"'
 # Other Alias
 alias cl='clear'
 alias tf='terraform'
-alias docker='podman'
 alias dc='docker-compose'
 alias sp='spotify'
 alias fk='fly -t k'
 alias pass='gopass'
+# use a symlink intead of an alias for podman, so I can use it in bash scripts which I cannot change
+ln -sf /Users/simonbein/.nix-profile/bin/podman /usr/local/bin/docker
 
 if [ -n "${commands[fzf-share]}" ]; then
   FZF_COMPLETION_TRIGGER='*'
