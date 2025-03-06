@@ -21,6 +21,10 @@ if vim.g.vscode == nil then
       config = require("plugins.onedark").Setup
     },
     { 'easymotion/vim-easymotion' },
+    {
+      'nvim-tree/nvim-tree.lua',
+      config = {},
+    },
     { 'hashivim/vim-hashicorp-tools' },
     { 'rust-lang/rust.vim' },
     { 'junegunn/fzf.vim' },
@@ -72,7 +76,7 @@ if vim.g.vscode == nil then
       config = require("plugins.telescope").Setup
     },
     { 'nvim-tree/nvim-web-devicons' },
-    { 'ekalinin/Dockerfile.vim', ft = "Dockerfile" },
+    { 'ekalinin/Dockerfile.vim',    ft = "Dockerfile" },
     {
       'luukvbaal/statuscol.nvim',
       config = require("plugins.statuscol").Setup

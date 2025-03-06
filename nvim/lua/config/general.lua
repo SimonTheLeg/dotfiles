@@ -46,3 +46,7 @@ km.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true, noremap = true })
 -- Switch gm and gM
 km.set('n', 'gm', 'gM', { noremap = true })
 km.set('n', 'gM', 'gm', { noremap = true })
+
+-- disable netwr
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
