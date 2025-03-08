@@ -140,7 +140,7 @@ ghf() {
 tempgo() {
   DATE=$(date +"%d-%m_%H-%M-%S")
   DIR="${HOME}/go-experiments/${DATE}" # unfortunately this cannot be in /tmp, because dlv cannot use breakpoints in symbolic links
-  mkdir ${DIR}
+  mkdir -p ${DIR}
   cd ${DIR}
   git init
   go mod init github.com/SimonTheLeg/go-tests
