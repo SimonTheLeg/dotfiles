@@ -254,6 +254,9 @@ source <(stern --completion=zsh)
 alias ls='exa'
 alias exa='exa --long --git'
 
+# fd alias
+alias find='fd'
+
 # Bat alias
 alias cat='bat --theme "TwoDark"'
 # autoload -U +X bashcompinit && bashcompinit
