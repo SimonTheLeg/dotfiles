@@ -29,6 +29,7 @@ alias gp='git push'
 alias gpf='git push --force-with-lease'
 alias gl="git lg"
 alias gc='git commit'
+alias gco='git checkout'
 alias gcm='git commit --amend'
 alias gcmn='git commit --amend --no-edit'
 alias gdc='git diff --cached'
