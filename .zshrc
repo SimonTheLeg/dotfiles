@@ -256,7 +256,9 @@ alias ls='exa'
 alias exa='exa --long --git'
 
 # fd alias
-alias find='fd'
+# -H include hidden files
+# -I include .gitignore files
+alias find='fd -IH'
 
 # Bat alias
 alias cat='bat --theme "TwoDark"'
