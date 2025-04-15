@@ -164,7 +164,7 @@ func execute() error {
 	return nil
 }
 EOF
-  code . main.go
+  code . --goto "main.go:16"
 }
 
 # Kubernetes Aliases
