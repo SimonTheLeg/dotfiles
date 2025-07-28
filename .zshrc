@@ -13,6 +13,9 @@ eval "$(starship init zsh)"
 # Set the default user (removes the user@hostname part of the regular prompt)
 DEFAULT_USER="simonbein"
 
+# History settings
+setopt hist_ignore_all_dups # ignore duplicates
+
 # Alias NeoVim as Vim
 alias vim=nvim
 export EDITOR='nvim'
