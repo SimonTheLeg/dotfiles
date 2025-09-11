@@ -11,7 +11,7 @@ style = 'green'
 truncate_to_repo = false
 
 [jobs]
-threshold = 2
+symbol_threshold = 1
 
 [gcloud]
 disabled = true
