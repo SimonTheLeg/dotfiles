@@ -22,6 +22,9 @@ disabled = true
 [aws]
 disabled = true
 
+[golang]
+disabled = true
+
 # if proxy variables are set, display them
 [env_var.HTTPS_PROXY]
 [env_var.HTTP_PROXY]
