@@ -4,7 +4,6 @@ Plugins_to_install = {
   { 'tpope/vim-commentary' },
   { 'wincent/terminus' },
   { "nvim-mini/mini.operators", keys = { { "gr", desc = "Replace operator" } }, opts = {} },
-  { 'tpope/vim-abolish' },
   { 'tpope/vim-surround' },
   { 'AndrewRadev/splitjoin.vim' },
   { 'jeetsukumaran/vim-indentwise' },
