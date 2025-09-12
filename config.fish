@@ -14,6 +14,9 @@ if status is-interactive
     abbr -a --command={kubectl,k} --regex "vv" -- "kubectl_vv" "-v=6"
     abbr -a --command=curl --regex "vv" -- "curl_vv" "-v"
 
+    # always include untracked files in git stash
+    abbr -a --command="git" --regex "stash" -- "git_stash" "stash --include-untracked"
+
     # Go configurations
     # additional versions can be installed via go install golang.org/dl/go<VERSION>@latest
     # add the location where all go versions are to path
