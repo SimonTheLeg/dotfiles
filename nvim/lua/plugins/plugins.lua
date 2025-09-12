@@ -3,7 +3,7 @@ Plugins_to_install = {
   { 'sheerun/vim-polyglot' },
   { 'tpope/vim-commentary' },
   { 'wincent/terminus' },
-  { "echasnovski/mini.operators", keys = { { "gr", desc = "Replace operator" } }, opts = {} },
+  { "nvim-mini/mini.operators", keys = { { "gr", desc = "Replace operator" } }, opts = {} },
   { 'tpope/vim-abolish' },
   { 'tpope/vim-surround' },
   { 'AndrewRadev/splitjoin.vim' },
