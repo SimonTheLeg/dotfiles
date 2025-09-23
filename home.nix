@@ -243,6 +243,11 @@ in {
       sha256 = "sha256-8k4HkboQ9qgwFGHaP8UDM+7i4Amhnl0OnzZh8NBEZ2c=";
     };
 
+    # needed for the absolute insanity that is the MacOS last login feature
+    ".hushlogin" = {
+      text = "";
+    };
+
   };
 
   programs.zsh = {
