@@ -27,6 +27,8 @@ if status is-interactive
     set GOROOT $(gohelper env GOROOT)
     set PATH $(gohelper env GOPATH)/bin $PATH
 
+    # allow for mouse scrolling in less
+    set LESS '--mouse'
 
     # Kubernetes settings
     alias k='kubectl'
