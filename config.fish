@@ -30,6 +30,9 @@ if status is-interactive
     # allow for mouse scrolling in less
     set LESS '--mouse'
 
+    # Set up fzf key bindings
+    fzf --fish | source
+
     # Kubernetes settings
     alias k='kubectl'
     alias kd='kubectl describe'
