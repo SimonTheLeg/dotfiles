@@ -219,6 +219,8 @@ in {
     ".config/nvim/".source =
       config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/nvim/";
     ".kube/kubie.yaml".source = "${dotFilesDir}/kubie.yaml";
+    ".config/fish/config.fish".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/config.fish";
 
     ".tmux/plugins/tpm".source = config.lib.file.mkOutOfStoreSymlink
       (pkgs.fetchFromGitHub {
