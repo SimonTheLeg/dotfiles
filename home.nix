@@ -228,7 +228,7 @@ in {
         sha256 = "sha256-qYBMDLIEkgiTFxjlF8AHn31HZ4nt/ZoeerzX70SSBaM=";
       });
 
-    "Library/Application Support/k9s/skin.yml".source = pkgs.fetchurl {
+    "Library/Application Support/k9s/skins/OneDark.yaml".source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/derailed/k9s/v0.27.4/skins/one_dark.yml";
         sha256 = "sha256-527BS3aU+2MmbnHXNzCYQ1b47cDistd5+2xuIXUQmpU=";
       };
