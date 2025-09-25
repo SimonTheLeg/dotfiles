@@ -68,7 +68,6 @@ in {
 
   home.packages = with pkgs_unstable; [
     apg
-    azure-cli
     bash
     bat
     cachix
