@@ -20,6 +20,12 @@ if exists('g:vscode')
   nnoremap <leader>tt <Cmd>call VSCodeCall('workbench.action.toggleLightDarkThemes')<CR>
   nnoremap <leader>rr <Cmd>call VSCodeCall('workbench.action.reloadWindow')<CR>
   nnoremap <C-w>z <Cmd>call VSCodeCall('workbench.action.minimizeOtherEditors')<CR>
+
+  " Json Management
+  nnoremap <leader>jp <Cmd>call VSCodeCall('extension.prettyJSON')<CR>
+  nnoremap <leader>jm <Cmd>call VSCodeCall('extension.minifyJSON')<CR>
+  vnoremap <leader>jp <Cmd>call VSCodeCall('extension.prettyJSON')<CR>
+  vnoremap <leader>jm <Cmd>call VSCodeCall('extension.minifyJSON')<CR>
 endif
 
 " Go specific Macros
