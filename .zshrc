@@ -271,9 +271,6 @@ alias cat='bat --theme "TwoDark"'
 alias cl='clear'
 alias tf='opentofu'
 alias dc='docker-compose'
-alias sp='spotify'
-alias fk='fly -t k'
-alias pass='gopass'
 # use a symlink intead of an alias for podman, so I can use it in bash scripts which I cannot change
 ln -sf /Users/simonbein/.nix-profile/bin/podman /usr/local/bin/docker
 
