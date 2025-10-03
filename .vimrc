@@ -1,3 +1,7 @@
+" change cursor to line after exiting vim
+" required due to https://github.com/neovim/neovim/issues/4396
+:autocmd VimLeave * set guicursor=a:ver30-blinkoff
+
 " VSCode specific settings
 if exists('g:vscode')
   nnoremap <leader>grc <Cmd>call VSCodeCall('gitlens.copyRemoteFileUrlToClipboard')<CR>
