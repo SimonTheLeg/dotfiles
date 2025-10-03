@@ -252,6 +252,11 @@ in {
       text = "";
     };
 
+    # experimental section TODO at one point I'll have to decide between ghostty and kitty
+    ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/ghostty/";
+
+    ".config/kitty/kitty.conf".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/kitty.conf";
+
   };
 
   programs.zsh = {

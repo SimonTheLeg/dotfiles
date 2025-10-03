@@ -1,0 +1,51 @@
+# for now give this a similiar thick look like on iTerm
+font-family = Menlo
+font-style-bold = false # since we already thicken the fonts, disable bold fonts
+font-size = 17
+font-thicken = true
+adjust-cell-height = 30%
+adjust-icon-height = 30%
+
+scrollback-limit = 1000000
+
+window-save-state = always
+
+# ensure that cursor does not blink in default mode
+shell-integration-features = no-cursor
+cursor-style-blink = false
+
+# Color scheme equivalent to One Dark
+palette = 0=#3F4451
+palette = 1=#E06C75
+palette = 2=#98C379
+palette = 3=#D19A66
+palette = 4=#61AFEF
+palette = 5=#C678DD
+palette = 6=#56B6C2
+palette = 7=#D7DAE0
+palette = 8=#4F5666
+palette = 9=#BE5046
+palette = 10=#A5E075
+palette = 11=#E5C07B
+palette = 12=#4DC4FF
+palette = 13=#DE73FF
+palette = 14=#4CD1E0
+palette = 15=#E6E6E6
+background = 282C34
+foreground = ABB2BF
+cursor-color = ABB2BF
+cursor-text = 282C34
+selection-background = ABB2BF
+selection-foreground = 282C34
+
+unfocused-split-opacity = 1
+
+macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = tabs
+window-titlebar-foreground = 61AFEF
+
+command = /Users/simonbein/.nix-profile/bin/fish --login --interactive
+
+# for now hide the title, as I cannot change the font color
+title = " "
+
