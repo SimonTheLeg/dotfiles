@@ -100,6 +100,10 @@ if status is-interactive
     # bind p fish_clipboard_paste
     # bind -s --preset -M visual -m default y "fish_clipboard_copy; commandline -f end-selection repaint-mode"
 
+    # Source scmpuff before we define our git aliases
+    # since we want to overwrite some of the ones scmpuff adds
+    scmpuff init --shell=fish | source
+
     # Git aliases and settings
     alias gs='scmpuff_status'
     alias ga='git add'
@@ -126,8 +130,6 @@ if status is-interactive
     alias gio='git-open'
     alias gst='git stash --all'
     alias gstp='git stash --pop'
-    # Source scmpuff
-    scmpuff init --shell=fish | source
 
     # GitHub settings
     set -gx GH_COM_USERNAME SimonTheLeg
