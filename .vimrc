@@ -16,7 +16,7 @@ if exists('g:vscode')
   nnoremap <leader>lP <Cmd>call VSCodeCall('editor.action.marker.prev')<CR>
   nnoremap <leader>lp <Cmd>call VSCodeCall('editor.action.marker.next')<CR>
   nnoremap <leader>li <Cmd>call VSCodeCall('go.import.add')<CR>
-  nnoremap zi <Cmd>call VSCodeCall('editor.fold')<CR>
+  " VsCode Management
   nnoremap <leader>tt <Cmd>call VSCodeCall('workbench.action.toggleLightDarkThemes')<CR>
   nnoremap <leader>rr <Cmd>call VSCodeCall('workbench.action.reloadWindow')<CR>
   nnoremap <C-w>z <Cmd>call VSCodeCall('workbench.action.minimizeOtherEditors')<CR>
