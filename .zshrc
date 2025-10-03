@@ -23,7 +23,7 @@ export EDITOR='nvim'
 # Fix color for autocomplete in tmux
 export TERM=xterm-256color
 
-# Set up gs as alias for git
+# Git aliases
 alias gs='scmpuff_status'
 alias ga='git add'
 alias gb='git branch'
