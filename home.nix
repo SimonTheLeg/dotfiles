@@ -146,7 +146,6 @@ in {
     imagemagick
     gifsicle
     pv
-    coreutils
     grpcurl
     git-filter-repo
     nixfmt-classic
@@ -180,7 +179,6 @@ in {
     gnutar
     crane
     dyff
-    coreutils-prefixed
     nix-prefetch
     kratos
     ory
@@ -205,7 +203,11 @@ in {
     lf
     less # custom version of less so we can have mousewheel support
     nixd
-  ];
+  ] ++ (if pkgs.stdenv.isDarwin then [
+    # MacOS only packages go here
+    coreutils
+  ]
+  else []);
   # for future Simon: if I ever need more than one channel as source, here's how to do it https://discourse.nixos.org/t/nix-env-i-runs-out-of-memory-with-unstable-overlay/1517/3
 
   home.file = {
