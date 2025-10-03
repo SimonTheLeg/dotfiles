@@ -364,6 +364,8 @@ source <(konf completion zsh)
 # terraform auto-completion
 complete -o nospace -C /Users/simonbein/.nix-profile/bin/terraform terraform
 
+# allow for mouse scrolling in less
+export LESS='--mouse'
 
 # dj prow setup
 source <(dj completion zsh)
