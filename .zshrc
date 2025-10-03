@@ -170,6 +170,10 @@ EOF
   code . --goto "main.go:16"
 }
 
+godebug() {
+  go build -o debug -gcflags="all=-N -l" $1 && ./debug $2
+}
+
 # Kubernetes Aliases
 alias kc='kubectl'
 alias k='kubectl'
