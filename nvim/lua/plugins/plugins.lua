@@ -9,8 +9,15 @@ Plugins_to_install = {
   { 'jeetsukumaran/vim-indentwise' },
   { 'terryma/vim-multiple-cursors' },
   { 'tpope/vim-obsession' },
-  -- don't jump to next occurence when pressing '*'
   { 'chaoren/vim-wordmotion' },
+  -- don't jump to next occurence when pressing '*'. Instead navigate via n and N
+  {
+    'inkarkat/vim-SearchHighlighting',
+    dependencies = {
+      'inkarkat/vim-ingo-library'
+    },
+    config = require("plugins.searchhighlighting").Setup
+  },
 }
 
 -- Plugins to only use inside nvim
