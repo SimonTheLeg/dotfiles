@@ -9,6 +9,8 @@ Plugins_to_install = {
   { 'jeetsukumaran/vim-indentwise' },
   { 'terryma/vim-multiple-cursors' },
   { 'tpope/vim-obsession' },
+  -- don't jump to next occurence when pressing '*'
+  { 'chaoren/vim-wordmotion' },
 }
 
 -- Plugins to only use inside nvim
