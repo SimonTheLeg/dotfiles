@@ -4,10 +4,15 @@
 
 " VSCode specific settings
 if exists('g:vscode')
+  " Git Operations
   nnoremap <leader>grc <Cmd>call VSCodeCall('gitlens.copyRemoteFileUrlToClipboard')<CR>
   nnoremap <leader>grC <Cmd>call VSCodeCall('gitlens.openCommitOnRemote')<CR>
   nnoremap <leader>grf <Cmd>call VSCodeCall('gitlens.openFileOnRemote')<CR>
   nnoremap <leader>grr <Cmd>call VSCodeCall('git.revertSelectedRanges')<CR>
+  nnoremap <leader>gh <Cmd>call VSCodeCall('git.viewLineHistory')<CR>
+  vnoremap <leader>gh <Cmd>call VSCodeCall('git.viewLineHistory')<CR>
+
+  " Language Server Operations
   nnoremap <leader>wl <Cmd>call VSCodeCall('rewrap.rewrapComment')<CR>
   nnoremap <leader>ld <Cmd>call VSCodeCall('go.debug.cursor')<CR>
   nnoremap <leader>lt <Cmd>call VSCodeCall('testing.runAtCursor')<CR>
