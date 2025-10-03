@@ -22,7 +22,7 @@ if status is-interactive
     # add the location where all go versions are to path
     set PATH $HOME/go/bin $PATH
     # set the default go version to use with plain "go" commands
-    alias gohelper go1.24.0
+    alias gohelper go1.25.1
     set PATH $(gohelper env GOROOT)/bin $PATH # simple alias go=go1.22.6 is not enough as some tools explicitedly search for the go binary inside $PATH
     set GOROOT $(gohelper env GOROOT)
     set PATH $(gohelper env GOPATH)/bin $PATH
