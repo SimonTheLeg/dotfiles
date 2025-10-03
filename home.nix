@@ -235,7 +235,6 @@ in {
         sha256 = "sha256-527BS3aU+2MmbnHXNzCYQ1b47cDistd5+2xuIXUQmpU=";
       };
 
-
     ".iterm2_shell_integration.zsh".source = pkgs.fetchurl {
       url = "https://iterm2.com/shell_integration/zsh";
       sha256 = "sha256-kQJ8bVIh7nEjYJ6OWqiEDqIY+YWD5RbD1CXV+KKyDno";
