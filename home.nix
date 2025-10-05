@@ -257,6 +257,9 @@ in {
       text = "";
     };
 
+    # Hyprland configuration TODO only move this on non MacOS
+    ".config/hypr".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/hypr/";
+
     # experimental section TODO at one point I'll have to decide between ghostty and kitty
     ".config/ghostty".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/ghostty/";
 
