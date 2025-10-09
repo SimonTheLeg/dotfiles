@@ -1,11 +1,24 @@
 local M = {}
 
 M.Setup = function()
+  local actions = require "telescope.actions"
+
   require('telescope').setup {
     pickers = {
       find_files = {
         hidden = true,
         file_ignore_patterns = { ".git/" },
+        -- reverse Enter and ctrl+t bindings
+        mappings = {
+          i = {
+            ["<CR>"] = actions.select_tab_drop, -- _drop so we switch to the tab instead of reopening if it already exists
+            ["<C-t>"] = actions.select_default,
+          },
+          n = {
+            ["<CR>"] = actions.select_tab_drop, -- _drop so we switch to the tab instead of reopening if it already exists
+            ["<C-t>"] = actions.select_default,
+          },
+        },
       }
     }
   }
