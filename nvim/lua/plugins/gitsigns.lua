@@ -42,6 +42,8 @@ M.Setup = function()
           gs.nav_hunk('prev')
         end
       end, { desc = "git previous hunk" })
+      -- select hunks
+      map('n', '<leader>gv', gs.select_hunk, { desc = "git select hunk" })
     end
   }
 
