@@ -183,7 +183,8 @@ in {
     oauth2c
     rclone
     jfrog-cli
-    python312Packages.mike # muli mkDocs management
+    # disable for now as it's completely broken :/
+    # python315Packages.mike # multi mkDocs management
     riffdiff
     podman
     fd
