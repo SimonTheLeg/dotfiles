@@ -14,6 +14,7 @@
   "markdown-preview.nvim": { "branch": "master", "commit": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee" },
   "mini.operators": { "branch": "main", "commit": "1d0d1e1570e5bd22e6df3bcb068d0a2ac0d30710" },
   "neogit": { "branch": "master", "commit": "90dcfa7b2bd5f3f35d1a7afe24dde9e2bc482cd4" },
+  "nvim-surround": { "branch": "main", "commit": "75de1782c781961e392efcca57601bf436f4d550" },
   "nvim-tree.lua": { "branch": "master", "commit": "87d096a39cb2d5d43e6771563575ff042a79f48b" },
   "nvim-web-devicons": { "branch": "master", "commit": "b8221e42cf7287c4dcde81f232f58d7b947c210d" },
   "onedark.nvim": { "branch": "master", "commit": "de495fabe171d48aed5525f002d14414efcecbb2" },

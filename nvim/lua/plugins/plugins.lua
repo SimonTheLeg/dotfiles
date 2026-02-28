@@ -18,6 +18,8 @@ Plugins_to_install = {
     },
     config = require("plugins.searchhighlighting").Setup
   },
+  -- allow for text surrounding
+  { 'kylechui/nvim-surround' },
 }
 
 -- Plugins to only use inside nvim
