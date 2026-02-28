@@ -87,6 +87,7 @@ if status is-interactive
     ln -sf /Users/simonbein/.nix-profile/bin/podman /usr/local/bin/docker
 
     # NeoVim settings
+    alias v="nvim"
     alias vim="nvim"
     set -x EDITOR nvim
     set -x KUBE_EDITOR nvim
