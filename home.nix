@@ -149,7 +149,7 @@ in {
     grpcurl
     git-filter-repo
     nixfmt-classic
-    python310
+    python315
     k9s
     highlight
     graphviz
