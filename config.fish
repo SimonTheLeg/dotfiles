@@ -267,7 +267,12 @@ if status is-interactive
     function godebug -d "Build target arg1 with debug flags and start binary with arg2.."
         go build -o ./.local/debug -gcflags="all=-N -l" $argv[1] && ./.local/debug $argv[2..]
     end
+
+    function fzf_search -d "Start File searching"
+        find . "$HOME/code" "$HOME/go-experiments" --type d -d 3 | fzf
     end
+    abbr -a  --position anywhere --function fzf_search -- "ff"
+
     # custom keybindings
     # allow to use ctrl-z as a suspend & foreground toggle
     bind \cz 'fg 2>/dev/null; commandline -f repaint'
