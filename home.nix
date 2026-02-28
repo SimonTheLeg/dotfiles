@@ -95,7 +95,6 @@ in {
     minikube
     moreutils
     mtr
-    mycli
     neovim
     niv
     nnn
