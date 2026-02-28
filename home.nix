@@ -215,6 +215,7 @@ in {
     ".tmux.conf".source = "${dotFilesDir}/.tmux.conf";
     ".vimrc".source = "${dotFilesDir}/.vimrc";
     ".gitconfig".source = "${dotFilesDir}/.gitconfig";
+    ".gitignore".source = "${dotFilesDir}/.global-gitignore";
     ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink
       "${dotFilesDir}/starship.toml"; # mkOutOfStoreSymlink is needed so starship can write into the file
     # since I am playing around with nvim the whole day, keep this as a symlink for now
