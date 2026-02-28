@@ -32,6 +32,8 @@ if status is-interactive
     set -x PATH $(gohelper env GOROOT)/bin $PATH # simple alias go=go1.22.6 is not enough as some tools explicitedly search for the go binary inside $PATH
     set -x GOROOT $(gohelper env GOROOT)
     set -x PATH $(gohelper env GOPATH)/bin $PATH
+    # autocompletion for delve
+    dlv completion fish | source
 
     # allow for mouse scrolling in less
     set -x LESS '--mouse'
