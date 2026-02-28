@@ -16,6 +16,11 @@ if status is-interactive
 
     # always include untracked files in git stash
     abbr -a --command="git" --regex "stash" -- "git_stash" "stash --include-untracked"
+    # pipe anything into pbcopy
+    abbr -a --position anywhere "pp" "| pbcopy"
+
+    # pipe anything into less
+    abbr -a --position anywhere "ll" "| less"
 
     # Go configurations
     # additional versions can be installed via go install golang.org/dl/go<VERSION>@latest
