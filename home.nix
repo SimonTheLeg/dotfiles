@@ -161,7 +161,6 @@ in {
     nodejs
     go-tools
     lua
-    fio
     nginx
     exiftool
     kubernetes-controller-tools
