@@ -94,6 +94,12 @@ if vim.g.vscode == nil then
     {
       'lewis6991/gitsigns.nvim',
       config = require("plugins.gitsigns").Setup
+    },
+    {
+      'folke/persistence.nvim',
+      event = "BufReadPre", -- This starts session saving when opening a file
+      config = require("plugins.persistence").Setup,
+      init = require("plugins.persistence").Init,
     }
   }
   local function concattables(t1, t2)
