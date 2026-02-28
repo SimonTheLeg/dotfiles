@@ -1,3 +1,10 @@
+-- Change cursor to line after exiting vim
+-- Required due to https://github.com/neovim/neovim/issues/4396
+vim.api.nvim_create_autocmd("VimLeave", {
+  pattern = "*",
+  command = "set guicursor=a:ver30-blinkoff"
+})
+
 -- Settings in this file are always applied
 local opt = vim.opt
 local fn = vim.fn
