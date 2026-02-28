@@ -243,16 +243,14 @@ if status is-interactive
         end
 
         # otherwise open the branch picker
-        set branches $(git --no-pager branch --sort=-committerdate \
-                          --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
-                            | sed '/^$/d') || return
-
+        set branches "$(git --no-pager branch --sort=-committerdate --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" | sed '/^$/d')" || return
+        # set tags "$(git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}')" || return
         set target $(
-            echo "$branches"; echo "$tags" |
+            # echo "$branches"; echo "$tags" |
+            echo "$branches"|
             fzf --no-hscroll --no-multi -n 2 \
             --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
-        echo $target
-        # git switch $(awk '{print $2}' <<<"$target" )
+        git switch $(echo $target | awk '{print $2}')
     end
 
     function tempgo -d "Setup a temporary Go project for testing"
