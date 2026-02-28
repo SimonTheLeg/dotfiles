@@ -202,6 +202,7 @@ in {
     less # custom version of less so we can have mousewheel support
     nixd
     lua-language-server
+    github-copilot-cli
   ] ++ (if pkgs.stdenv.isDarwin then [
     # MacOS only packages go here
     coreutils
