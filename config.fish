@@ -14,8 +14,9 @@ if status is-interactive
     abbr -a --command={kubectl,k} --regex "vv" -- "kubectl_vv" "-v=6"
     abbr -a --command=curl --regex "vv" -- "curl_vv" "-v"
 
-    # always include untracked files in git stash
-    abbr -a --command="git" --regex "stash" -- "git_stash" "stash --include-untracked"
+    # enable yaml output on "yy"
+    abbr -a --command={kubectl,k} --regex "yy" -- "kubectl_yy" "-o=yaml"
+
     # pipe anything into pbcopy
     abbr -a --position anywhere "pp" "| pbcopy"
 
