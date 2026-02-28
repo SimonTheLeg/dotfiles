@@ -2,10 +2,10 @@ if status is-interactive
     # disable fish greeting
     set fish_greeting
 
-    set DOTFILES_DIR "$HOME/code/github/simontheleg/dotfiles"
+    set -x DOTFILES_DIR "$HOME/code/github/simontheleg/dotfiles"
 
     # at this point I have given up with all the nix-fish magick, so I just add the nix binaries manually to path
-    set PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $PATH
+    set -x PATH $HOME/.nix-profile/bin /nix/var/nix/profiles/default/bin $PATH
 
     # init starship
     starship init fish | source
@@ -20,15 +20,15 @@ if status is-interactive
     # Go configurations
     # additional versions can be installed via go install golang.org/dl/go<VERSION>@latest
     # add the location where all go versions are to path
-    set PATH $HOME/go/bin $PATH
+    set -x PATH $HOME/go/bin $PATH
     # set the default go version to use with plain "go" commands
     alias gohelper go1.25.1
-    set PATH $(gohelper env GOROOT)/bin $PATH # simple alias go=go1.22.6 is not enough as some tools explicitedly search for the go binary inside $PATH
-    set GOROOT $(gohelper env GOROOT)
-    set PATH $(gohelper env GOPATH)/bin $PATH
+    set -x PATH $(gohelper env GOROOT)/bin $PATH # simple alias go=go1.22.6 is not enough as some tools explicitedly search for the go binary inside $PATH
+    set -x GOROOT $(gohelper env GOROOT)
+    set -x PATH $(gohelper env GOPATH)/bin $PATH
 
     # allow for mouse scrolling in less
-    set LESS '--mouse'
+    set -x LESS '--mouse'
 
     # Set up fzf key bindings
     fzf --fish | source
@@ -41,11 +41,11 @@ if status is-interactive
     alias kwn='kc get pods --all-namespaces -o custom-columns=NAMESPACE:.metadata.namespace,NAME:.metadata.name,NODE:.spec.nodeName'
     alias k9s='k9s --logoless'
     # k9s settings
-    set K9S_SKIN OneDark
+    set -x K9S_SKIN OneDark
     # stern settings
     stern --completion=fish | source
     # source plugins installed by krew
-    set PATH $HOME/.krew/bin $PATH
+    set -x PATH $HOME/.krew/bin $PATH
 
     # konf settings
     # mandatory konf settings
@@ -80,7 +80,8 @@ if status is-interactive
 
     # NeoVim settings
     alias vim="nvim"
-    set EDITOR nvim
+    set -x EDITOR nvim
+    set -x KUBE_EDITOR nvim
 
     # fish tracing/debugging
     abbr -a ft fish_trace=on
