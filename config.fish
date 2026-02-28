@@ -265,7 +265,8 @@ if status is-interactive
     end
 
     function godebug -d "Build target arg1 with debug flags and start binary with arg2.."
-        go build -o debug -gcflags="all=-N -l" $argv[1] && ./debug $argv[2..]
+        go build -o ./.local/debug -gcflags="all=-N -l" $argv[1] && ./.local/debug $argv[2..]
+    end
     end
     # custom keybindings
     # allow to use ctrl-z as a suspend & foreground toggle
