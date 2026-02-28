@@ -201,6 +201,7 @@ in {
     lf
     less # custom version of less so we can have mousewheel support
     nixd
+    lua-language-server
   ] ++ (if pkgs.stdenv.isDarwin then [
     # MacOS only packages go here
     coreutils
