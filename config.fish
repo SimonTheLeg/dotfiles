@@ -18,10 +18,10 @@ if status is-interactive
     abbr -a --command={kubectl,k} --regex "yy" -- "kubectl_yy" "-o=yaml"
 
     # pipe anything into pbcopy
-    abbr -a --position anywhere "pp" "| pbcopy"
+    abbr -a --position anywhere --set-cursor "pp" "% | pbcopy"
 
     # pipe anything into less
-    abbr -a --position anywhere "ll" "| less"
+    abbr -a --position anywhere --set-cursor "ll" "% | less"
 
     # Go configurations
     # additional versions can be installed via go install golang.org/dl/go<VERSION>@latest
