@@ -147,7 +147,7 @@ in {
     pv
     grpcurl
     git-filter-repo
-    nixfmt-classic
+    nixfmt
     python315
     k9s
     highlight
