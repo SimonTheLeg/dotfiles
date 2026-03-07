@@ -204,6 +204,7 @@ in {
     lua-language-server
     github-copilot-cli
     claude-code
+    xan # csv file management
   ] ++ (if pkgs.stdenv.isDarwin then [
     # MacOS only packages go here
     coreutils
