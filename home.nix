@@ -203,6 +203,7 @@ in {
     nixd
     lua-language-server
     github-copilot-cli
+    claude-code
   ] ++ (if pkgs.stdenv.isDarwin then [
     # MacOS only packages go here
     coreutils

@@ -1,2 +1,5 @@
 # create a little local haven to place files
 .local
+# ignore all claude files for now, while I am trying it out
+**/Claude.md
+.claude
