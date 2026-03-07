@@ -46,7 +46,6 @@ M.Setup = function()
       map('n', '<leader>gv', gs.select_hunk, { desc = "git select hunk" })
     end
   }
-
 end
 
 
