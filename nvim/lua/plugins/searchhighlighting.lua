@@ -1,8 +1,10 @@
-local M = {}
-
-M.Setup = function()
-  -- use '#' like '*'
-  vim.keymap.set('n', '#', '<Plug>SearchHighlightingStar')
-end
-
-return M
+return {
+  'inkarkat/vim-SearchHighlighting',
+  dependencies = {
+    'inkarkat/vim-ingo-library'
+  },
+  config = function()
+    -- use '#' like '*'
+    vim.keymap.set('n', '#', '<Plug>SearchHighlightingStar')
+  end,
+}
