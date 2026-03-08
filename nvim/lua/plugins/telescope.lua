@@ -20,10 +20,12 @@ return {
             i = {
               ["<CR>"] = actions.select_tab_drop, -- _drop so we switch to the tab instead of reopening if it already exists
               ["<C-t>"] = actions.select_default,
+              ["<Esc><Esc>"] = actions.close, -- we need this so we can have clear search highlighting on <esc><esc> in normal vim but not in telescope prompts
             },
             n = {
               ["<CR>"] = actions.select_tab_drop, -- _drop so we switch to the tab instead of reopening if it already exists
               ["<C-t>"] = actions.select_default,
+              ["<Esc><Esc>"] = actions.close, -- we need this so we can have clear search highlighting on <esc><esc> in normal vim but not in telescope prompts
             },
           },
         },
@@ -35,10 +37,12 @@ return {
             i = {
               ["<CR>"] = actions.select_tab_drop, -- _drop so we switch to the tab instead of reopening if it already exists
               ["<C-t>"] = actions.select_default,
+              ["<Esc><Esc>"] = actions.close, -- we need this so we can have clear search highlighting on <esc><esc> in normal vim but not in telescope prompts
             },
             n = {
               ["<CR>"] = actions.select_tab_drop, -- _drop so we switch to the tab instead of reopening if it already exists
               ["<C-t>"] = actions.select_default,
+              ["<Esc><Esc>"] = actions.close, -- we need this so we can have clear search highlighting on <esc><esc> in normal vim but not in telescope prompts
             },
           },
         }
