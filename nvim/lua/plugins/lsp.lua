@@ -48,6 +48,7 @@ return {
       vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "go to next diagnostic (lsp)" })
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "go to previous diagnostic (lsp)" })
       vim.keymap.set('n', 'gh', vim.diagnostic.open_float, { desc = "show diagnostic in floating window (lsp)" })
+      vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, { desc = "go to definition (lsp)" })
     end
   },
 }
