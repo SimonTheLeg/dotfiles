@@ -201,6 +201,8 @@ in {
     lf
     less # custom version of less so we can have mousewheel support
     nixd
+    ov # pager alternative to less
+    delta # pager alternative for git diff
     lua-language-server
     github-copilot-cli
     claude-code
