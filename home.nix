@@ -8,43 +8,16 @@ let
   # that directory
   dotFilesDir = "${homeDir}/code/github/simontheleg/dotfiles";
 
-  # pin stable and unstable channels to specific commits
-  nixstablecommit = "b7589ceaeea275918c209db1c9a2c51e327af1ee";
-  nixunstablecommit = "c0f3d81a7ddbc2b1332be0d8481a672b4f6004d6"; # nixpkgs-unstable 28.02.2026
+  # Nixpkgs source pins are defined in nix/nixpkgs.nix
+  nixpkgsSources = import ./nix/nixpkgs.nix;
 
-  pkgs = import (builtins.fetchGit {
-    name = "nixpkgs-stable";
-    url = "https://github.com/nixos/nixpkgs.git";
-    ref = "refs/heads/nixpkgs-23.05-darwin";
-    rev = "${nixstablecommit}";
-  }) { config = { allowUnfree = true; }; };
+  pkgs = import (builtins.fetchGit nixpkgsSources.stable) {
+    config = { allowUnfree = true; };
+  };
 
-  pkgs_unstable = import (builtins.fetchGit {
-    name = "nixpkgs-unstable";
-    url = "https://github.com/nixos/nixpkgs.git";
-    # ref = "refs/heads/nixpkgs-unstable";
-    ref = "refs/heads/master";
-    rev = "${nixunstablecommit}";
-  }) {
+  pkgs_unstable = import (builtins.fetchGit nixpkgsSources.unstable) {
     config = { allowUnfree = true; };
     overlays = [ ];
-
-    # TODO figure out go overrides
-    # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/go.section.md
-    # overlays = [
-    #   (self: super: {
-    #     kubebuilder = super.kubebuilder.overrideAttrs
-    #       (finalAttrs: previousAttrs: {
-    #         version = "4.2.0";
-    #         src = pkgs.fetchFromGitHub {
-    #           inherit (previousAttrs.src) owner repo;
-    #           rev = "v${finalAttrs.version}";
-    #           hash = "sha256-iWu3HnfjT9hiDyl9Ni0xJa/e+E9fbh3bnfrdE1ChaWc=";
-    #         };
-    #         vendorHash = "sha256-dMzDKYjPBAiNFwzaBML76tMylHtBs9Tb2Ulj/WovVJ4=";
-    #       });
-    #   })
-    # ];
   };
 
 in {
@@ -66,154 +39,11 @@ in {
   # changes in each release.
   home.stateVersion = "21.05";
 
-  home.packages = with pkgs_unstable; [
-    apg
-    bash
-    bat
-    cachix
-    dhall-lsp-server
-    diff-so-fancy
-    direnv
-    dive
-    eza
-    fzf
-    gettext
-    gh
-    git
-    git-sizer
-    gnugrep
-    gnupg
-    gnused
-    gopass
-    gradle
-    istioctl
-    jq
-    json2hcl
-    kubectl
-    librsvg
-    lorri
-    minikube
-    moreutils
-    mtr
-    neovim
-    niv
-    nnn
-    postgresql
-    protobuf
-    putty
-    pwgen
-    redis
-    ripgrep
-    shellcheck
-    silver-searcher
-    sox
-    stack
-    starship
-    stern
-    terraform # still need it for formatter
-    terraform-docs
-    terraform-ls
-    tmux
-    tree
-    vim
-    watch
-    wget
-    nix-prefetch-github
-    ngrok
-    git-open
-    scmpuff
-    google-cloud-sdk
-    google-clasp
-    awscli2
-    operator-sdk
-    kubernetes-helm
-    kind
-    fluxcd
-    zsh-z
-    kustomize
-    asciinema
-    vault
-    yq-go
-    prometheus
-    htop
-    sops
-    krew
-    sonobuoy
-    act
-    findutils
-    bash-completion
-    imagemagick
-    gifsicle
-    pv
-    grpcurl
-    git-filter-repo
-    nixfmt
-    python315
-    k9s
-    highlight
-    graphviz
-    goreleaser
-    minio-client
-    rakkess
-    hugo
-    inkscape
-    nodejs
-    go-tools
-    lua
-    nginx
-    exiftool
-    kubernetes-controller-tools
-    pstree
-    yarn
-    cmake
-    openssl
-    cfssl
-    dos2unix # line ending converter
-    chart-testing # helm chart testing
-    opentofu
-    gawk
-    git-crypt
-    gnutar
-    crane
-    dyff
-    nix-prefetch
-    kratos
-    ory
-    jwt-cli
-    oauth2c
-    rclone
-    jfrog-cli
-    # disable for now as it's completely broken :/
-    # python315Packages.mike # multi mkDocs management
-    riffdiff
-    podman
-    fd
-    go-task
-    ansifilter
-    expect # for 'unbuffer' cli
-    bazel-buildtools
-    electron-bin
-    mkdocs
-    ollama
-    etcd
-    kubebuilder
-    fish
-    lf
-    less # custom version of less so we can have mousewheel support
-    nixd
-    ov # pager alternative to less
-    delta # pager alternative for git diff
-    lua-language-server
-    github-copilot-cli
-    claude-code
-    xan # csv file management
-  ] ++ (if pkgs.stdenv.isDarwin then [
-    # MacOS only packages go here
-    coreutils
-    iproute2mac
-  ]
-  else []);
-  # for future Simon: if I ever need more than one channel as source, here's how to do it https://discourse.nixos.org/t/nix-env-i-runs-out-of-memory-with-unstable-overlay/1517/3
+  # Package definitions with individual version tracking are in nix/packages/
+  home.packages = import ./nix/packages {
+    pkgs = pkgs_unstable;
+    isDarwin = pkgs.stdenv.isDarwin;
+  };
 
   home.file = {
     ".zprofile".source = "${dotFilesDir}/.zprofile";
