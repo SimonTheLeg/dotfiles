@@ -105,10 +105,11 @@ if status is-interactive
     # enable vi mode
     set -g fish_key_bindings fish_vi_key_bindings
 
-    # # make vi-mode work with system clipboard
-    # bind -M normal yy fish_clipboard_copy
-    # bind p fish_clipboard_paste
-    # bind -s --preset -M visual -m default y "fish_clipboard_copy; commandline -f end-selection repaint-mode"
+    # make vi-mode work with system clipboard
+    bind -M default yy fish_clipboard_copy
+    bind -M default p fish_clipboard_paste
+    bind -M visual -m default y "fish_clipboard_copy; commandline -f end-selection repaint-mode"
+    bind -M default -m insert CC 'commandline -r ""; commandline -f repaint'
 
     # Source scmpuff before we define our git aliases
     # since we want to overwrite some of the ones scmpuff adds
