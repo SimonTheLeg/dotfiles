@@ -28,3 +28,7 @@
 	gpgsign = true # it should be fine to set this on global level, as I am mainly working on OpenSource Software for now. In case of private repos which are not OpenSource, this could be overwritten per Repo
 [checkout]
 	defaultRemote = origin
+[credential "https://github.com"]
+	helper = !/home/simonbein/.nix-profile/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/home/simonbein/.nix-profile/bin/gh auth git-credential
