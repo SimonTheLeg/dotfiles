@@ -236,6 +236,7 @@ in {
         rev = "v3.0.0";
         sha256 = "sha256-qYBMDLIEkgiTFxjlF8AHn31HZ4nt/ZoeerzX70SSBaM=";
       });
+    ".gnupg/gpg-agent.conf".source = "${dotFilesDir}/.gpg-agent.conf";
 
     "Library/Application Support/k9s/skins/OneDark.yaml".source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/derailed/k9s/v0.27.4/skins/one_dark.yml";
