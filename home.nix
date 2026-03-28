@@ -10,7 +10,7 @@ let
 
   # pin stable and unstable channels to specific commits
   nixstablecommit = "b7589ceaeea275918c209db1c9a2c51e327af1ee";
-  nixunstablecommit = "c0f3d81a7ddbc2b1332be0d8481a672b4f6004d6"; # nixpkgs-unstable 28.02.2026
+  nixunstablecommit = "b40629efe5d6ec48dd1efba650c797ddbd39ace0"; # nixpkgs-unstable 19.03.2026
 
   pkgs = import (builtins.fetchGit {
     name = "nixpkgs-stable";
