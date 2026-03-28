@@ -270,7 +270,7 @@ if status is-interactive
     end
 
     function fzf_search -d "Start File searching"
-        find . "$HOME/code" "$HOME/go-experiments" --type d -d 3 | fzf
+        fd . "$HOME/code" "$HOME/go-experiments" --type d -d 3 | fzf
     end
     abbr -a  --position anywhere --function fzf_search -- "ff"
 
