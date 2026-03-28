@@ -204,6 +204,7 @@ in {
     github-copilot-cli
     claude-code
     xan # csv file management
+    worktrunk # better git worktree management
     go # always install one default version of Go. Later on additional version are managed via go install (see fish.config)
     nix-search
   ] ++ (if pkgs.stdenv.isDarwin then [
