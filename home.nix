@@ -67,6 +67,7 @@ in {
   home.stateVersion = "21.05";
 
   home.packages = with pkgs_unstable; [
+    # packages for both MacOs and NixOS go here
     apg
     bash
     bat
@@ -81,9 +82,6 @@ in {
     gh
     git
     git-sizer
-    gnugrep
-    gnupg
-    gnused
     gopass
     gradle
     istioctl
@@ -197,7 +195,6 @@ in {
     ollama
     etcd
     kubebuilder
-    fish
     lf
     less # custom version of less so we can have mousewheel support
     nixd
@@ -207,10 +204,16 @@ in {
     github-copilot-cli
     claude-code
     xan # csv file management
+    go # always install one default version of Go. Later on additional version are managed via go install (see fish.config)
+    nix-search
   ] ++ (if pkgs.stdenv.isDarwin then [
     # MacOS only packages go here
     coreutils
+    fish # will be managed by NixOS directly on tower
     iproute2mac
+    gnugrep
+    gnupg
+    gnused
   ]
   else []);
   # for future Simon: if I ever need more than one channel as source, here's how to do it https://discourse.nixos.org/t/nix-env-i-runs-out-of-memory-with-unstable-overlay/1517/3
