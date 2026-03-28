@@ -1,7 +1,9 @@
 # for now give this a similiar thick look like on iTerm
 font-family = Menlo
 font-style-bold = false # since we already thicken the fonts, disable bold fonts
-font-size = 17
+# TODO due to the annoying DPI differences (https://github.com/ghostty-org/ghostty/discussions/7743#discussioncomment-13724740) 
+# font-size is not the same on MacOS and Linux. Instead I'll have to create something like this (https://github.com/ThePaulMcBride/dotfiles/commit/e30ef822ef73b28a497f8b02071cc233a1f05dce)
+font-size = 12
 font-thicken = true
 adjust-cell-height = 30%
 adjust-icon-height = 30%
@@ -44,8 +46,26 @@ macos-titlebar-proxy-icon = hidden
 macos-titlebar-style = tabs
 window-titlebar-foreground = 61AFEF
 
-command = /Users/simonbein/.nix-profile/bin/fish --login --interactive
-
 # for now hide the title, as I cannot change the font color
-title = " "
+# TODO for Linux this is kind of ugly :/
+# title = " "
 
+# Keyboard shortcuts
+# Focus Splits
+keybind = ctrl+f>l=goto_split:right
+keybind = ctrl+f>h=goto_split:left
+keybind = ctrl+f>k=goto_split:up
+keybind = ctrl+f>j=goto_split:down
+# Creating new splits & destroying them
+keybind = ctrl+f>v=new_split:right
+# keybind = ctrl+f>H=new_split:left
+# keybind = ctrl+k>L=new_split:up
+keybind = ctrl+f>s=new_split:down
+keybind = ctrl+f>q=close_surface
+keybind = ctrl+f>==equalize_splits
+keybind = ctrl+f>z=toggle_split_zoom
+# Resize splits
+keybind = ctrl+f>shift+l=resize_split:right,50
+keybind = ctrl+f>shift+h=resize_split:left,50
+keybind = ctrl+f>shift+k=resize_split:up,50
+keybind = ctrl+f>shift+j=resize_split:down,50
