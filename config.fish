@@ -10,6 +10,9 @@ if status is-interactive
     # init starship
     starship init fish | source
 
+    # use ov as a pager
+    set -x PAGER "ov"
+
     # enable verbose logging on "vv"
     abbr -a --command={kubectl,k} --regex "vv" -- "kubectl_vv" "-v=6"
     abbr -a --command=curl --regex "vv" -- "curl_vv" "-v"
