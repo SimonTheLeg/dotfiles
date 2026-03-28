@@ -12,42 +12,55 @@ let
   nixstablecommit = "b7589ceaeea275918c209db1c9a2c51e327af1ee";
   nixunstablecommit = "b40629efe5d6ec48dd1efba650c797ddbd39ace0"; # nixpkgs-unstable 19.03.2026
 
-  pkgs = import (builtins.fetchGit {
-    name = "nixpkgs-stable";
-    url = "https://github.com/nixos/nixpkgs.git";
-    ref = "refs/heads/nixpkgs-23.05-darwin";
-    rev = "${nixstablecommit}";
-  }) { config = { allowUnfree = true; }; };
+  pkgs =
+    import
+      (builtins.fetchGit {
+        name = "nixpkgs-stable";
+        url = "https://github.com/nixos/nixpkgs.git";
+        ref = "refs/heads/nixpkgs-23.05-darwin";
+        rev = "${nixstablecommit}";
+      })
+      {
+        config = {
+          allowUnfree = true;
+        };
+      };
 
-  pkgs_unstable = import (builtins.fetchGit {
-    name = "nixpkgs-unstable";
-    url = "https://github.com/nixos/nixpkgs.git";
-    # ref = "refs/heads/nixpkgs-unstable";
-    ref = "refs/heads/master";
-    rev = "${nixunstablecommit}";
-  }) {
-    config = { allowUnfree = true; };
-    overlays = [ ];
+  pkgs_unstable =
+    import
+      (builtins.fetchGit {
+        name = "nixpkgs-unstable";
+        url = "https://github.com/nixos/nixpkgs.git";
+        # ref = "refs/heads/nixpkgs-unstable";
+        ref = "refs/heads/master";
+        rev = "${nixunstablecommit}";
+      })
+      {
+        config = {
+          allowUnfree = true;
+        };
+        overlays = [ ];
 
-    # TODO figure out go overrides
-    # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/go.section.md
-    # overlays = [
-    #   (self: super: {
-    #     kubebuilder = super.kubebuilder.overrideAttrs
-    #       (finalAttrs: previousAttrs: {
-    #         version = "4.2.0";
-    #         src = pkgs.fetchFromGitHub {
-    #           inherit (previousAttrs.src) owner repo;
-    #           rev = "v${finalAttrs.version}";
-    #           hash = "sha256-iWu3HnfjT9hiDyl9Ni0xJa/e+E9fbh3bnfrdE1ChaWc=";
-    #         };
-    #         vendorHash = "sha256-dMzDKYjPBAiNFwzaBML76tMylHtBs9Tb2Ulj/WovVJ4=";
-    #       });
-    #   })
-    # ];
-  };
+        # TODO figure out go overrides
+        # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/go.section.md
+        # overlays = [
+        #   (self: super: {
+        #     kubebuilder = super.kubebuilder.overrideAttrs
+        #       (finalAttrs: previousAttrs: {
+        #         version = "4.2.0";
+        #         src = pkgs.fetchFromGitHub {
+        #           inherit (previousAttrs.src) owner repo;
+        #           rev = "v${finalAttrs.version}";
+        #           hash = "sha256-iWu3HnfjT9hiDyl9Ni0xJa/e+E9fbh3bnfrdE1ChaWc=";
+        #         };
+        #         vendorHash = "sha256-dMzDKYjPBAiNFwzaBML76tMylHtBs9Tb2Ulj/WovVJ4=";
+        #       });
+        #   })
+        # ];
+      };
 
-in {
+in
+{
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -67,7 +80,6 @@ in {
   home.stateVersion = "21.05";
 
   home.packages = with pkgs_unstable; [
-    # packages for both MacOs and NixOS go here
     apg
     bash
     bat
@@ -82,6 +94,9 @@ in {
     gh
     git
     git-sizer
+    gnugrep
+    gnupg
+    gnused
     gopass
     gradle
     istioctl
@@ -195,6 +210,7 @@ in {
     ollama
     etcd
     kubebuilder
+    fish
     lf
     less # custom version of less so we can have mousewheel support
     nixd
@@ -207,20 +223,13 @@ in {
     worktrunk # better git worktree management
     go # always install one default version of Go. Later on additional version are managed via go install (see fish.config)
     nix-search
+    zellij # experimental: tmux alternative
   ] ++ (if pkgs.stdenv.isDarwin then [
     # MacOS only packages go here
     coreutils
-    fish # will be managed by NixOS directly on tower
     iproute2mac
-    gnugrep
-    gnupg
-    gnused
   ]
-  else [
-  # NixOS only packages go here
-  xdg-desktop-portal-hyprland
-  xdg-desktop-portal-gtk
-  ]);
+  else []);
   # for future Simon: if I ever need more than one channel as source, here's how to do it https://discourse.nixos.org/t/nix-env-i-runs-out-of-memory-with-unstable-overlay/1517/3
 
   home.file = {
@@ -228,28 +237,28 @@ in {
     ".tmux.conf".source = "${dotFilesDir}/.tmux.conf";
     ".gitconfig".source = "${dotFilesDir}/.gitconfig";
     ".gitignore".source = "${dotFilesDir}/.global-gitignore";
-    ".config/starship.toml".source = config.lib.file.mkOutOfStoreSymlink
-      "${dotFilesDir}/starship.toml"; # mkOutOfStoreSymlink is needed so starship can write into the file
+    ".config/starship.toml".source =
+      config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/starship.toml"; # mkOutOfStoreSymlink is needed so starship can write into the file
     # since I am playing around with nvim the whole day, keep this as a symlink for now
-    ".config/nvim/".source =
-      config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/nvim/";
+    ".config/nvim/".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/nvim/";
     ".kube/kubie.yaml".source = "${dotFilesDir}/kubie.yaml";
     ".config/fish/config.fish".source =
       config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/config.fish";
 
-    ".tmux/plugins/tpm".source = config.lib.file.mkOutOfStoreSymlink
-      (pkgs.fetchFromGitHub {
+    ".tmux/plugins/tpm".source = config.lib.file.mkOutOfStoreSymlink (
+      pkgs.fetchFromGitHub {
         owner = "tmux-plugins";
         repo = "tpm";
         rev = "v3.0.0";
         sha256 = "sha256-qYBMDLIEkgiTFxjlF8AHn31HZ4nt/ZoeerzX70SSBaM=";
-      });
+      }
+    );
     ".gnupg/gpg-agent.conf".source = "${dotFilesDir}/.gpg-agent.conf";
 
     "Library/Application Support/k9s/skins/OneDark.yaml".source = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/derailed/k9s/v0.27.4/skins/one_dark.yml";
-        sha256 = "sha256-527BS3aU+2MmbnHXNzCYQ1b47cDistd5+2xuIXUQmpU=";
-      };
+      url = "https://raw.githubusercontent.com/derailed/k9s/v0.27.4/skins/one_dark.yml";
+      sha256 = "sha256-527BS3aU+2MmbnHXNzCYQ1b47cDistd5+2xuIXUQmpU=";
+    };
 
     ".iterm2_shell_integration.zsh".source = pkgs.fetchurl {
       url = "https://iterm2.com/shell_integration/zsh";
@@ -290,7 +299,9 @@ in {
 
     initExtra = builtins.readFile "${dotFilesDir}/.zshrc";
 
-    oh-my-zsh = { enable = true; };
+    oh-my-zsh = {
+      enable = true;
+    };
 
     # For now I have given up on managing all plugins and autocompletions via the zsh nix module. Reasons are:
     # - it seems really tough install completion packages. e.g. terraform has its own completions, which is not managed by the plugin it self (see https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/terraform. And I could not find a way to install this
