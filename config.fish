@@ -75,7 +75,7 @@ if status is-interactive
     # fd alias
     # -H include hidden files
     # -I include .gitignore files
-    alias find='fd -IH'
+    alias fd='fd -IH'
     # replace cat with bat
     alias cat='bat --theme "TwoDark"'
     alias cl='clear'
