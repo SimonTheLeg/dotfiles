@@ -34,15 +34,6 @@ return {
         end,
       })
 
-      -- Treesitter indentation (skip nix where it breaks spacing)
-      vim.api.nvim_create_autocmd('FileType', {
-        callback = function(args)
-          if args.match ~= 'nix' then
-            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-          end
-        end,
-      })
-
     end,
   },
 }
