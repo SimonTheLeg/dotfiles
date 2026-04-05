@@ -54,6 +54,10 @@ km.set('n', '<Esc><Esc>', ':noh<CR>', { silent = true, noremap = true })
 km.set('n', 'gm', 'gM', { noremap = true })
 km.set('n', 'gM', 'gm', { noremap = true })
 
+-- Free up Ctrl-F and Ctrl-B for custom bindings
+km.set({ 'n', 'v' }, '<C-f>', '<Nop>', { noremap = true })
+km.set({ 'n', 'v' }, '<C-b>', '<Nop>', { noremap = true })
+
 -- disable netwr
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
