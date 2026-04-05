@@ -225,6 +225,7 @@ in
     nix-search
     zellij # experimental: tmux alternative
     hwatch # watch command alternative with history
+    tree-sitter # now required with NeoVim >=0.12
   ] ++ (if pkgs.stdenv.isDarwin then [
     # MacOS only packages go here
     coreutils

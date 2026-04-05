@@ -1,5 +1,4 @@
 local shared = {
-  { 'sheerun/vim-polyglot' },
   { 'tpope/vim-commentary' },
   { 'wincent/terminus' },
   { 'tpope/vim-surround' },
