@@ -224,6 +224,7 @@ in
     go # always install one default version of Go. Later on additional version are managed via go install (see fish.config)
     nix-search
     zellij # experimental: tmux alternative
+    hwatch # watch command alternative with history
   ] ++ (if pkgs.stdenv.isDarwin then [
     # MacOS only packages go here
     coreutils
