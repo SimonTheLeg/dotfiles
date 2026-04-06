@@ -1,0 +1,32 @@
+// Zellij configuration
+// See: https://zellij.dev/documentation/configuration.html
+
+// Keybindings
+keybinds {
+  normal {
+    unbind "Ctrl g"
+  }
+}
+
+// Theme configuration
+theme "onedark"
+
+// UI configuration
+pane_frames true
+simplified_ui true
+
+// Default layout
+// TODO let's start using this once we have a better understanding what we want
+// default_layout "default"
+
+// Default shell
+default_shell "fish"
+
+// Default editor
+// scrollback_editor "nvim"
+
+// Mouse mode
+mouse_mode true
+
+// Scrollback buffer size
+scroll_buffer_size 100000

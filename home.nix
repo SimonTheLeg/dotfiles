@@ -257,6 +257,8 @@ in
     );
     ".gnupg/gpg-agent.conf".source = "${dotFilesDir}/.gpg-agent.conf";
 
+    ".config/zellij/".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/zellij/";
+
     "Library/Application Support/k9s/skins/OneDark.yaml".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/derailed/k9s/v0.27.4/skins/one_dark.yml";
       sha256 = "sha256-527BS3aU+2MmbnHXNzCYQ1b47cDistd5+2xuIXUQmpU=";
