@@ -145,6 +145,67 @@ if status is-interactive
     alias gst='git stash --all'
     alias gstp='git stash --pop'
 
+    # Worktree test/reset workflow (supplements wt)
+    function wt-test -d "Commit worktree changes, ff-merge onto default branch, restore worktree, switch to default"
+        set -l default_branch (git symbolic-ref refs/remotes/origin/HEAD | cut -f4 -d/)
+        if not test -n "$default_branch"
+            echo "Could not determine default branch. Run: git remote set-head origin --auto"
+            return 1
+        end
+
+        set -l branch (git branch --show-current)
+        if test "$branch" = "$default_branch"
+            echo "Already on $default_branch — run this from a worktree branch."
+            return 1
+        end
+
+        # Find the main worktree path (where default branch is checked out)
+        set -l main_wt (git worktree list --porcelain | grep -B2 "branch refs/heads/$default_branch" | head -1 | string replace "worktree " "")
+        if not test -n "$main_wt"
+            echo "Could not find worktree for $default_branch."
+            return 1
+        end
+
+        # Save pre-merge state for wt-reset
+        git update-ref refs/wt-test/pre-merge (git rev-parse "$default_branch")
+
+        # Commit all changes (including untracked) on the current branch
+        set -l did_commit false
+        git add -A
+        and git commit -m "wt-test: temporary commit for testing"
+        and set did_commit true
+
+        # Fast-forward the default branch by merging from its worktree
+        if not git -C "$main_wt" merge --ff-only "$branch"
+            if $did_commit
+                git reset HEAD~1
+            end
+            git update-ref -d refs/wt-test/pre-merge
+            echo "Fast-forward failed. Is $default_branch behind $branch?"
+            return 1
+        end
+
+        # Undo the temporary commit on the worktree, restoring dirty state
+        if $did_commit
+            git reset HEAD~1
+        end
+
+        # Switch to the default branch worktree
+        wt switch "$default_branch"
+        and echo "Merged $branch onto $default_branch. Undo with: wt-reset"
+    end
+
+    function wt-reset -d "Undo wt-test: reset default branch to pre-merge state"
+        set -l ref (git rev-parse --verify refs/wt-test/pre-merge 2>/dev/null)
+        if not test -n "$ref"
+            echo "No wt-test to undo."
+            return 1
+        end
+        git reset --keep $ref
+        and git update-ref -d refs/wt-test/pre-merge
+        and echo "Reset to pre-merge state."
+    end
+
     # GitHub settings
     set -gx GH_COM_USERNAME SimonTheLeg
     set -gx GH_SAP_USERNAME C5385163
