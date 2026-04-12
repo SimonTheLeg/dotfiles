@@ -343,4 +343,8 @@ if status is-interactive
     bind \cz 'fg 2>/dev/null; commandline -f repaint'
     bind -M insert \cz 'fg 2>/dev/null; commandline -f repaint'
 
+    # use ctrl-p to accept autosuggestions
+    bind -M insert \cp accept-autosuggestion
+    bind -M default \cp accept-autosuggestion
+
 end
