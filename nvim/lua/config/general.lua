@@ -61,3 +61,7 @@ km.set({ 'n', 'v' }, '<C-b>', '<Nop>', { noremap = true })
 -- disable netwr
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- make tabs, spaces visible
+opt.listchars = { tab = '->', space = '·' }
+opt.list = true
