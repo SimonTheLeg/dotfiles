@@ -4,6 +4,7 @@ local shared = {
   { 'tpope/vim-surround' },
   { 'AndrewRadev/splitjoin.vim' },
   { 'jeetsukumaran/vim-indentwise' },
+  { 'tpope/vim-sleuth' }, -- correctly detect indents
   { 'terryma/vim-multiple-cursors' },
   { 'tpope/vim-obsession' },
   { 'chaoren/vim-wordmotion' },
