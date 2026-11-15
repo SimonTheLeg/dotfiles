@@ -118,7 +118,7 @@ in
     redis
     ripgrep
     shellcheck
-    silver-searcher
+    silver-searcher-ng
     sox
     stack
     starship
