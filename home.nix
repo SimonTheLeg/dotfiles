@@ -10,7 +10,7 @@ let
 
   # pin stable and unstable channels to specific commits
   nixstablecommit = "b7589ceaeea275918c209db1c9a2c51e327af1ee";
-  nixunstablecommit = "5e11f7acce6c3469bef9df154d78534fa7ae8b6c"; # nixpkgs-unstable 5.4.2026
+  nixunstablecommit = "f45c6f04c2f013f004bf94e284e95d72898d9393"; # nixpkgs-unstable 30.9.2026
 
   pkgs =
     import
