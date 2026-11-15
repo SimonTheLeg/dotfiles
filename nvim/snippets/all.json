@@ -1,0 +1,15 @@
+{
+  "obo": {
+    "prefix": "obo",
+    "description": "on behalf of",
+    "body": [
+      "On-behalf-of: SAP <simon.bein@sap.com>",
+      "Signed-off-by: Simon Bein <simontheleg@gmail.com>"
+    ]
+  },
+  "sob": {
+    "prefix": "sob",
+    "description": "signed-off by",
+    "body": "Signed-off-by: Simon Bein <simontheleg@gmail.com>"
+  }
+}
