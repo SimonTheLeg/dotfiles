@@ -351,4 +351,8 @@ if status is-interactive
     bind -M insert \cp accept-autosuggestion
     bind -M default \cp accept-autosuggestion
 
+    # autocompletions
+    task --completion fish | source
+    fga completion fish | source
+
 end
