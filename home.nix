@@ -227,6 +227,7 @@ in
     tree-sitter # now required with NeoVim >=0.12
     pyroscope # for profilecli
     grafana-loki # for logcli
+    ruby # required for mechanicon website
   ] ++ (if pkgs.stdenv.isDarwin then [
     # MacOS only packages go here
     coreutils
