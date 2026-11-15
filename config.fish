@@ -144,6 +144,10 @@ if status is-interactive
     alias gio='git-open'
     alias gst='git stash --all'
     alias gstp='git stash --pop'
+    alias gtodo='git diff --cached --unified=0 | grep TODO'
+
+    # Worktree aliases
+    alias wts='wt switch'
 
     # Worktree test/reset workflow (supplements wt)
     function wt-test -d "Commit worktree changes, ff-merge onto default branch, restore worktree, switch to default"
