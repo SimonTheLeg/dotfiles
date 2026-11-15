@@ -26,12 +26,16 @@ Afterwards reboot the Mac and then it should be available under the standard inp
 
 2. Symlink home manager config and [Install Home Manager](https://github.com/nix-community/home-manager#installation)
 
-  ```sh
+  ```fish
   mkdir -p ${HOME}/.config/home-manager/
   ln -s -f ~/code/github/simontheleg/dotfiles/home.nix ${HOME}/.config/home-manager/home.nix
-  nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+  # Important: the home-manager channel must match the nixpkgs release that `<nixpkgs>` points to
+  # (check with `nix-instantiate --find-file nixpkgs` and reading its `.version` file).
+  # Using `master` against an older nixpkgs leads to evaluation errors such as
+  # "error: attribute 'genAttrs'' missing".
+  nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
   nix-channel --update
-  export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+  set -x NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH
   nix-shell '<home-manager>' -A install
   ```
 
