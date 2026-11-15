@@ -105,7 +105,6 @@ in
     kubectl
     librsvg
     lorri
-    minikube
     moreutils
     mtr
     neovim
