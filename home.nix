@@ -265,7 +265,14 @@ in
     );
     ".gnupg/gpg-agent.conf".source = "${dotFilesDir}/.gpg-agent.conf";
 
-    ".config/zellij/".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/zellij/";
+    ".config/zellij/config.kdl".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/zellij/config.kdl";
+    # ".config/zellij/layouts".source = config.lib.file.mkOutOfStoreSymlink "${dotFilesDir}/zellij/layouts";
+
+    ".config/zellij/plugins/zellij-attention.wasm".source = pkgs.fetchurl {
+      url = "https://github.com/KiryuuLight/zellij-attention/releases/download/v0.3.1/zellij-attention.wasm";
+      sha256 = "sha256-QgkzerYacxRI7HMzYvPvaZqQW7tcARKpOm1hY2D9ci8=";
+    };
+
 
     "Library/Application Support/k9s/skins/OneDark.yaml".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/derailed/k9s/v0.27.4/skins/one_dark.yml";

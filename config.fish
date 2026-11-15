@@ -85,6 +85,11 @@ if status is-interactive
         mkdir $argv[1] && cd $argv[1]
     end
 
+    # zellij aliases
+    function zrp
+        zellij action rename-pane $argv[1]
+    end
+
     # Podman settings
     # use a symlink intead of an alias for podman, so I can use it in bash scripts which I cannot change
     ln -sf /Users/simonbein/.nix-profile/bin/podman /usr/local/bin/docker
@@ -350,6 +355,22 @@ if status is-interactive
     # use ctrl-p to accept autosuggestions
     bind -M insert \cp accept-autosuggestion
     bind -M default \cp accept-autosuggestion
+
+    # Configure terminal title for Zellij pane titles
+    # Shows: <current-folder> or <current-folder> - <command> when running a foreground process
+    function fish_title
+        set -l current_dir (basename (pwd))
+
+        # Get the current foreground command
+        set -l command (status current-command)
+
+        # If we're running a command other than fish itself, show it
+        if test "$command" != "fish"
+            echo "$current_dir - $command"
+        else
+            echo "$current_dir"
+        end
+    end
 
     # autocompletions
     task --completion fish | source
