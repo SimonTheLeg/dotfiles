@@ -9,6 +9,9 @@ return {
       keymap = { preset = 'super-tab' },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+          snippets = { opts = { use_label_description = true } },
+        },
       },
     },
   },
